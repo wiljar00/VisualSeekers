@@ -9,7 +9,7 @@ we can remove the color anytime.
 */
 
 .bottomSection {
-    width: 1350px;
+    width: 90%;
     height: 850;
     display: inline-block;
     text-align: center;
@@ -33,7 +33,7 @@ we can remove the color anytime.
 }
 
 .lineGraphs {
-    width: 400px;
+    width: 20%;
     height: 800px;
     float: left;
     background-color: lightblue;
@@ -50,22 +50,21 @@ we can remove the color anytime.
 }
 
 .topSection {
-    width: 1350px;
+    width: 100%;
     height: 850;
-    display: inline-block;
+    float: left;
     text-align: center;
 }
 
 .view {
-    width: 1300px;
-    height: 850;
-    display: inline-block;
+    width: 100%;
+    height: fit-content;
     text-align: center;
-    background-color: lightblue;
+
 }
 
 .worldMap {
-    width: 900px;
+    width: 75%;
     height: 800px;
     float: left;
     background-color: lightblue;
