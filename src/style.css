@@ -1,0 +1,75 @@
+
+/* 
+
+Stylesheet for main.html
+
+The background colors are just to help us see the sections, 
+we can remove the color anytime. 
+
+*/
+
+.bottomSection {
+    width: 1350px;
+    height: 850;
+    display: inline-block;
+    text-align: center;
+}
+
+.compareGraph {
+    /* width: 900px; */
+    height: 500px;
+    background-color: lightblue;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.dataTable{
+    /* width: 900px; */
+    height: 500px;
+    text-align: center;
+    background-color: lightblue;
+    border: 1px solid black;
+
+}
+
+.lineGraphs {
+    width: 400px;
+    height: 800px;
+    float: left;
+    background-color: lightblue;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.teamInfo{
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+}
+
+.topSection {
+    width: 1350px;
+    height: 850;
+    display: inline-block;
+    text-align: center;
+}
+
+.view {
+    width: 1300px;
+    height: 850;
+    display: inline-block;
+    text-align: center;
+    background-color: lightblue;
+}
+
+.worldMap {
+    width: 900px;
+    height: 800px;
+    float: left;
+    background-color: lightblue;
+    padding: 10px;
+    border: 1px solid black;
+}
+
