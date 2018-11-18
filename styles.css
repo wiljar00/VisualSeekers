@@ -1,0 +1,394 @@
+.axis {
+	font: 15px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #D4D8DA;
+  stroke-width: 2px;
+  shape-rendering: crispEdges;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+
+#sidebar {
+    overflow: hidden;
+    z-index: 3;
+}
+
+.collapsing.width {
+    -webkit-transition-property: width, visibility;
+    transition-property: width, visibility;
+    width: 0px;
+    -webkit-transition: width 0.35s ease;
+    -moz-transition: width 0.35s ease;
+    -o-transition: width 0.35s ease;
+    transition: width 0.35s ease;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: auto;
+    z-index: 0;
+    background: rgba(250, 250, 250, 0.8);
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+	height:600px;
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+#float-button-group {
+    position:absolute;
+    left:90%;
+    top:30%;
+    opacity:0.5;
+}
+
+#float-button-group:hover {
+    opacity:1;
+}
+
+.mapContainer {
+    background: skyblue;
+    width: 965px;
+    height: 505px;
+    border: 3px solid steelblue;
+}
+
+.slider.slider-horizontal {
+    width: 90%;
+    height: 20px;
+}
+
+.yearRangeText {
+    box-sizing: border-box;
+    float: left;
+    border-right: 1px solid #e4e9ec;
+    text-align: center;
+    vertical-align: middle;
+    width: 12%;
+    padding: 0;
+}
+.yearRangeSlider{
+    box-sizing: border-box;
+    float: left;
+    height : 22px;
+    margin: 0px 20px;
+    width: 80%;
+}
+#yearSlider .slider-track-high {
+    background: 	#D3D3D3;
+}
+
+#yearSlider .slider-track-low {
+    background: 	#D3D3D3;
+}
+
+.yearRangeSlider .slider-selection {
+    background: #aad4e5;
+}
+
+.countryIconDiv {
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#countryIcon {
+    border-radius: 50%;
+    height: 100%;
+}
+
+
+.div-board {
+    border: 2px solid #d9d9d9;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;	
+}
+
+
+.ticks {
+    font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+    stroke-linecap: round;
+}
+
+.track {
+    stroke: #000;
+    stroke-opacity: 0.3;
+    stroke-width: 10px;
+}
+
+.track-inset {
+    stroke: #ddd;
+    stroke-width: 8px;
+}
+
+.track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    stroke: transparent;
+    cursor: crosshair;
+}
+
+.handle {
+    fill: #fff;
+    stroke: #000;
+    stroke-opacity: 0.5;
+    stroke-width: 1.25px;
+}
+
+.countries {
+    stroke: #f7f7f7;
+    fill: #d9d9d9;
+}
+
+.legend-element {
+    width: 15px;
+    height: 15px;
+}
+
+.cntryMouseOver {
+    fill: #2b8cbe;
+    fill-opacity: 0.2;
+}
+
+
+.selected {
+    fill: #2b8cbe;
+    fill-opacity: 0.5;
+}
+
+
+/*Map grid style*/
+.grat {
+    stroke: grey;
+    stroke-width: 1px;
+    opacity: .2;
+}
+
+#header {
+    background-color:lightgrey;
+    color:darkred;
+    text-align:center;
+    padding:0.5em;
+}
+
+#yearChart {
+    padding:0.5em;
+    text-align:center;
+}
+
+
+.d3-tip {
+    /*line-height: 5;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 120px;
+    border-style: groove;
+    /*padding: 12px;*/
+    background: #FFFFFF;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    pointer-events: none;
+}
+.tooltip-title{
+    font-size:18px;
+    font-family: "Arial Black";
+}
+.focus circle {
+    fill: red;
+}
+.focus rect {
+    fill: yellow;
+}
+.focus text {
+    font-size: 15px;
+    font-weight: bold;
+}
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    /*box-sizing: border-box;*/
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    /*line-height: 1;*/
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+    content: "\25BC";
+    /*margin: -1px 0 0 0;*/
+    top: 100%;
+    left: 0;
+    text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+    content: "\26A0";
+    /*margin: -4px 0 0 0;*/
+    top: -800px;
+    left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+    content: "\25B2";
+    /*margin: 4px 0 1px 0;*/
+    top: -8px;
+    left: 1481px;
+    text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+    content: "\25B6";
+    /*margin: -4px 0 0 -1px;*/
+    top: 50%;
+    left: 100%;
+}
+
+.zoom {
+    fill: none;
+    pointer-events: all;
+}
+
+
+.yearZoom {
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+}
+
+.yearCircle {
+    fill : steelblue;
+    stroke: black;
+    stroke-width : 2px;
+    r : 8;
+}
+
+.yearCircleSelected {
+    fill : red;
+    stroke: black;
+    stroke-width : 2px;
+    r : 15;
+}
+
+.yearContextCircle {
+    fill : steelblue;
+    stroke: black;
+    stroke-width : 2px;
+    r : 3;
+}
+
+.disabled {
+    fill-opacity: 0;
+}
+
+.agg-tooltip {   
+    position: absolute;         
+    text-align: center;                                             
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightgrey; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
+
+.event-tooltip {   
+    position: absolute;                
+    width: 150px;                                       
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightgrey; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
+
+@font-face {
+    font-family: Optima;
+    src: url("./fonts/optima.ttf");
+}
+
+#map text {
+    font-family: Optima;
+}
+
+.table-align {
+    text-align : left;
+}
+
+.map-selected {
+}
