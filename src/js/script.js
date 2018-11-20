@@ -1,37 +1,13 @@
-d3.csv("data/ObeseAdults.csv").then(obeseData => {
-    obeseList=FormatData(obeseData);
-    console.log(obeseList,"obeseList");
-});
+FetchData();
+setTimeout(CallObjects, 400);
 
-d3.csv("data/vegetableConsumption.csv").then(vegConsumptiondata => {
-    vegConsumptionList=FormatData(vegConsumptiondata);
-    console.log(vegConsumptionList,"vegConsumptionList");
-});
-
-d3.csv("data/fruitConsumption.csv").then(fruitConsumptiondata => {
-   fruitConsumptionList=FormatData(fruitConsumptiondata);
-    console.log(fruitConsumptionList,"fruitConsumptionList");
-});
-
-d3.csv("data/life-expectancy.csv").then(lifeExpectancydata => {
-   lifeExpectancyList=FormatData(lifeExpectancydata);
-    console.log(lifeExpectancyList,"lifeExpectancyList");
-});
-
-d3.csv("data/share_of_females.csv").then(shareOfFemales => {
-   shareOfFemalesList=FormatData(shareOfFemales);
-    console.log(shareOfFemalesList,"shareOfFemales");
-});
-
-d3.csv("data/share_of_males.csv").then(shareOfMales => {
-   shareOfMalesList=FormatData(shareOfMales);
-    console.log(shareOfMalesList,"shareOfMales");
-});
-
-d3.json("data/world.json")
-    .then(function(world) {
-        console.log(world,"world");
-    });
+obeseList=[];
+vegConsumptionList=[];
+fruitConsumptionList=[];
+shareOfFemalesList=[];
+shareOfMalesList=[];
+FemaleData={};
+MaleData={};
 
 function FormatData(data)
 {
@@ -57,3 +33,56 @@ function FormatData(data)
 }
 
 
+async function FetchData(){
+    // console.log('this first');
+d3.csv("src/data/ObeseAdults.csv").then(obeseData => {
+    obeseList=FormatData(obeseData);
+    // console.log(obeseList,"obeseList");
+});
+
+d3.csv("src/data/vegetableConsumption.csv").then(vegConsumptiondata => {
+    vegConsumptionList=FormatData(vegConsumptiondata);
+    // console.log(vegConsumptionList,"vegConsumptionList");
+});
+
+d3.csv("src/data/fruitConsumption.csv").then(fruitConsumptiondata => {
+   fruitConsumptionList=FormatData(fruitConsumptiondata);
+    // console.log(fruitConsumptionList,"fruitConsumptionList");
+});
+
+d3.csv("src/data/life-expectancy.csv").then(lifeExpectancydata => {
+   lifeExpectancyList=FormatData(lifeExpectancydata);
+    // console.log(lifeExpectancyList,"lifeExpectancyList");
+});
+
+d3.csv("src/data/share_of_females.csv").then(shareOfFemales => {
+   shareOfFemalesList=FormatData(shareOfFemales);
+    console.log(shareOfFemalesList,"shareOfFemales");
+
+});
+
+d3.csv("src/data/share_of_males.csv").then(shareOfMales => {
+   shareOfMalesList=FormatData(shareOfMales);
+    console.log(shareOfMalesList,"shareOfMales");
+});
+
+d3.csv("src/data/population.csv").then(population => {
+   populationList=FormatData(population);
+    // console.log(populationList,"populationList");
+});
+
+d3.json("src/data/world.json")
+    .then(function(world) {
+        console.log(world,"world");
+    });
+// callback()
+ }
+
+async function CallObjects(){
+    MalePercentage=shareOfMalesList.filter(m=>m.Code=='CHN');
+    MaleData=MalePercentage[0];
+    FemalePercentage=shareOfFemalesList.filter(m=>m.Code=='CHN');
+    FemaleData=FemalePercentage[0];
+    let  obesityDistribution=new obesityDistributionGraph();
+    obesityDistribution.UpdateGraph(FemaleData,MaleData);
+}

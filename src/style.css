@@ -72,3 +72,13 @@ we can remove the color anytime.
     border: 1px solid black;
 }
 
+.female{
+    fill: #45AD6A;
+    color: #45AD6A;
+    text-anchor:start;
+}
+.male{
+    fill: #de2d26;
+    color: #de2d26;
+    text-anchor:end;
+}

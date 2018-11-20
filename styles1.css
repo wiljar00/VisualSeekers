@@ -30,3 +30,13 @@ body, html {
   
   height: 100%;
 }
+.female{
+    fill: #45AD6A;
+    color: #45AD6A;
+    text-anchor:start;
+}
+.male{
+    fill: #de2d26;
+    color: #de2d26;
+    text-anchor:end;
+}
