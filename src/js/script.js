@@ -35,43 +35,43 @@ function FormatData(data)
 
 async function FetchData(){
     // console.log('this first');
-d3.csv("src/data/ObeseAdults.csv").then(obeseData => {
+d3.csv("data/ObeseAdults.csv").then(obeseData => {
     obeseList=FormatData(obeseData);
     // console.log(obeseList,"obeseList");
 });
 
-d3.csv("src/data/vegetableConsumption.csv").then(vegConsumptiondata => {
+d3.csv("data/vegetableConsumption.csv").then(vegConsumptiondata => {
     vegConsumptionList=FormatData(vegConsumptiondata);
     // console.log(vegConsumptionList,"vegConsumptionList");
 });
 
-d3.csv("src/data/fruitConsumption.csv").then(fruitConsumptiondata => {
+d3.csv("data/fruitConsumption.csv").then(fruitConsumptiondata => {
    fruitConsumptionList=FormatData(fruitConsumptiondata);
     // console.log(fruitConsumptionList,"fruitConsumptionList");
 });
 
-d3.csv("src/data/life-expectancy.csv").then(lifeExpectancydata => {
+d3.csv("data/life-expectancy.csv").then(lifeExpectancydata => {
    lifeExpectancyList=FormatData(lifeExpectancydata);
     // console.log(lifeExpectancyList,"lifeExpectancyList");
 });
 
-d3.csv("src/data/share_of_females.csv").then(shareOfFemales => {
+d3.csv("data/share_of_females.csv").then(shareOfFemales => {
    shareOfFemalesList=FormatData(shareOfFemales);
     console.log(shareOfFemalesList,"shareOfFemales");
 
 });
 
-d3.csv("src/data/share_of_males.csv").then(shareOfMales => {
+d3.csv("data/share_of_males.csv").then(shareOfMales => {
    shareOfMalesList=FormatData(shareOfMales);
     console.log(shareOfMalesList,"shareOfMales");
 });
 
-d3.csv("src/data/population.csv").then(population => {
+d3.csv("data/population.csv").then(population => {
    populationList=FormatData(population);
     // console.log(populationList,"populationList");
 });
 
-d3.json("src/data/world.json")
+d3.json("data/world.json")
     .then(function(world) {
         console.log(world,"world");
     });
@@ -85,4 +85,10 @@ async function CallObjects(){
     FemaleData=FemalePercentage[0];
     let  obesityDistribution=new obesityDistributionGraph();
     obesityDistribution.UpdateGraph(FemaleData,MaleData);
+
+}
+
+async function CallLineGraph(){
+    let lineGraph = new lineGraph();
+    lineGraph.updateLineCharts();
 }
