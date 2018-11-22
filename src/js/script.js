@@ -56,13 +56,13 @@ d3.csv("data/life-expectancy.csv").then(lifeExpectancydata => {
 });
 
 d3.csv("data/share_of_females.csv").then(shareOfFemales => {
-   var shareOfFemalesList=FormatData(shareOfFemales);
+   shareOfFemalesList=FormatData(shareOfFemales);
     console.log(shareOfFemalesList,"shareOfFemales");
 
 });
 
 d3.csv("data/share_of_males.csv").then(shareOfMales => {
-   var shareOfMalesList=FormatData(shareOfMales);
+   shareOfMalesList=FormatData(shareOfMales);
     console.log(shareOfMalesList,"shareOfMales");
 });
 
@@ -78,20 +78,18 @@ d3.json("data/world.json")
 // callback()
  }
 
+
+
 async function CallObjects(){
-    MalePercentage=shareOfMalesList.filter(m=>m.Code==='CHN');
+    MalePercentage=shareOfMalesList.filter(m=>m.Code=='CHN');
     MaleData=MalePercentage[0];
-    FemalePercentage=shareOfFemalesList.filter(m=>m.Code==='CHN');
+    FemalePercentage=shareOfFemalesList.filter(m=>m.Code=='CHN');
     FemaleData=FemalePercentage[0];
     let  obesityDistribution=new obesityDistributionGraph();
-    console.log("script"+shareOfFemalesList)
     obesityDistribution.UpdateGraph(FemaleData,MaleData);
 
-}
-
-async function CallLineGraph(){
-    let lineGraph = new lineGraph();
-    lineGraph.updateLineCharts();
+    let lineGraph = new LineGraph();
+    lineGraph.updateLineGraphs(FemaleData,MaleData);
 }
 
 window.worldMap = new Map();
