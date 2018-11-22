@@ -422,11 +422,11 @@ We then continued by creating a variety divs to separate the project into separa
 Our first design attempts resulted in the following image. 
 ![Image sketch](ProposalSketches/firstPrototype.png)
 We made more changes and added a stacked graph. 
-![Image sketch](ProposalSketches/firstPrototype2.png)
+![Image sketch](ProposalSketches/firstProtoype2.png.png)
 
 Using the datasets we created, we began with a stacked bar graph. This graph is the first visualization of obesity in male and female adults throughout the world. We created this visualization in the comparison section with the assumption in mind that obesity has been increasing throuought the world in both men and women. The Stacked bar chart proved our assumption right by showing a significant trend. 
 
-![Image sketch](ProposalSketches/ComparisonGraph.png)
+![Image sketch](ProposalSketches/ComparisonGraph2.png)
 
 With our first comparison graph created, we continued to create a section of line graphs. The section of line graphs is to show individual attributes and allow the user to identify trends throughout the years on each attribute. These line graphs will show certain attributes of a selected country. At the point of our prototype, we were unable to tie our dataset completely to the line graphs, but were able to use randomized sample data to represent our desired outcome. 
 
@@ -442,5 +442,5 @@ Overall, our design turned out much like our first design sketches. More changes
 
 Finished Prototype:
 ![Image sketch](ProposalSketches/FinishedPrototype.png)
-![Image sketch](ProposalSketches/ComparisonGraph)
+![Image sketch](ProposalSketches/ComparisonGraph.png)
 
