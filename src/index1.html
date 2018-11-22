@@ -12,47 +12,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles1.css"/>
+    <script src="js/map.js" async></script>
+        <script type="application/javascript" src="js/script.js"></script>
+
+
     <!-- <link rel="stylesheet" href="styles.css"/> -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Obesity Trends</h1>
-        </header>
-        <div>
-            <div id="accordion" role="tablist">
-                <div class="container-fluid" id="mainContainer" >
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <button class="tablink" onclick="openPage('mapView', this, 'red')">MapView</button>
-                            <button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Comparison View</button>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade in active show" id="mapViewTab">
-                                <button class="tablink" onclick="openPage('mapView', this, 'red')">Map1</button>
-                                <button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Map2</button>
-                                <button class="tablink" onclick="openPage('mapView', this, 'red')">Map3</button>
-                                <button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Map4</button>
-                            </div>
-                        </div>
+<div class="container">
+    <header>
+        <h1>Obesity Trends</h1>
+    </header>
+    <div>
+        <div id="accordion" role="tablist">
+            <div class="container-fluid" id="mainContainer" >
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                        <button class="tablink" onclick="openPage('mapView', this, 'red')">MapView</button>
+                        <button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Comparison View</button>
+                        </ul>
+                    </div>
+                    <!--<div class="tab-content">-->
+                        <!--<div role="tabpanel" class="tab-pane fade in active show" id="mapViewTab">-->
+                            <!--<button class="tablink" onclick="openPage('mapView', this, 'red')">Map1</button>-->
+                            <!--<button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Map2</button>-->
+                            <!--<button class="tablink" onclick="openPage('mapView', this, 'red')">Map3</button>-->
+                            <!--<button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Map4</button>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
         </div>
-        <svg width="400" height="400" id="lineCharts">
+    </div >
+     <div >
+    <svg width="600" height="400" >
+
+    </svg>
+
+    <svg width="700" height="600" id="map-view" class="view">
+        <g id="map"> </g>
+    </svg>
+     </div>
+    <div>
+        <svg width="300" height="400" >
         </svg>
-        <svg width="700" height="400" id="map">
+        <svg width="2000" height="2000" id="obesityDistributionChart">
+            <g id="yAxis"></g>
         </svg>
-        <div>
-            <svg width="300" height="400" >
-            </svg>
-            <svg width="2000" height="2000" id="obesityDistributionChart">
-                <g id="yAxis"></g>
-            </svg>
-        </div>
+    </div>
     <script type="application/javascript" src="js/ObesityDistributionGraph.js"></script>
     <script type="application/javascript" src="js/lineGraphs.js"></script>
-    <script type="application/javascript" src="js/script.js"></script>
 </body>
 </html>

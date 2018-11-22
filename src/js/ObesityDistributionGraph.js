@@ -1,6 +1,7 @@
 class obesityDistributionGraph{
 
    constructor(){
+       this.worldMap=worldMap;
         this.tooltip = d3.select("body")
       .append("div")
       .style("position", "absolute")
@@ -13,6 +14,7 @@ class obesityDistributionGraph{
         var self=this;
        console.log(FemaleData,MaleData,"UpdateGraph");
        let years=[];
+       console.log("here"+FemaleData)
        FemaleData.Year.map(function(d){
         years.push(d.Year)
           }
