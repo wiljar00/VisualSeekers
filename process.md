@@ -399,9 +399,11 @@ Pratyusha will work on adding features from our optional feature list and help e
  
 **Proposal Sketches:**
 
-  ![Image of yaktocat](https://octodex.github.com/images/yaktocat.png)
-![Image sketch](VisualSeekers/ProposalSketches/IMG_0694.JPG)
-**Screen Shots:**
+![Image sketch](ProposalSketches/Sketch1.JPG)
+![Image sketch](ProposalSketches/Sketch2.JPG)
+![Image sketch](ProposalSketches/Sketch3.JPG)
+![Image sketch](ProposalSketches/SketchComparison.jpg)
+![Image sketch](ProposalSketches/SketchComparison2.JPG)
 
 **Process**
 
@@ -417,20 +419,28 @@ We began creating this visualization by processing our data. Our dataset is a co
 
 We then continued by creating a variety divs to separate the project into separate individual projects for each team member to work on. Placing each visualization in it's own section allowed us to create different graphs without waiting or depending on other group members to finish their work first. 
 
-![Image sketch](VisualSeekers/ProposalSketches/IMG_0694.JPG)
+Our first design attempts resulted in the following image. 
+![Image sketch](ProposalSketches/firstPrototype.png)
+We made more changes and added a stacked graph. 
+![Image sketch](ProposalSketches/firstPrototype2.png)
 
-Using this data, we began with a stacked bar graph. This graph is the first visualization of obesity in male and female adults throughout the world. We created this visualization in the comparison section with the assumption in mind that obesity has been increasing throuought the world in both men and women. The Stacked bar chart proved our assumption right by showing a significant trend. 
+Using the datasets we created, we began with a stacked bar graph. This graph is the first visualization of obesity in male and female adults throughout the world. We created this visualization in the comparison section with the assumption in mind that obesity has been increasing throuought the world in both men and women. The Stacked bar chart proved our assumption right by showing a significant trend. 
 
-![Image sketch](ProposalSketches/IMG_0694.JPG)
+![Image sketch](ProposalSketches/ComparisonGraph.png)
 
 With our first comparison graph created, we continued to create a section of line graphs. The section of line graphs is to show individual attributes and allow the user to identify trends throughout the years on each attribute. These line graphs will show certain attributes of a selected country. At the point of our prototype, we were unable to tie our dataset completely to the line graphs, but were able to use randomized sample data to represent our desired outcome. 
 
-![Image sketch](/ProposalSketches/IMG_0694.JPG)
+![Image sketch](ProposalSketches/lineGraphs.png)
 
 Our map portion of the project is added above the line graphs. This is the tool that will be used to choose countries to be analyzed. We created a world map with selectable countries. This map is not yet connected to the dataset collection, so selecting a country will not load a dataset. As of right now, the countries are clickable and print to the console. Selecting dataset by country will be our next step. 
 
-![Image sketch](//ProposalSketches/IMG_0694.JPG)
+![Image sketch](ProposalSketches/FinishedPrototype.png)
 
 We ran into various issues along our development process. Our stacked graph is useful to see one trend, but it is not extensible yet and will not work easily with another dataset. This is true for the line graphs as well. We will need to refactor our code to allow the changing of datasets. This requires more thought and testing, which we will be doing in the coming weeks. Visually, we had issues scaling each graph to fit our first designs. It will take more work to scale the individual attribute line graphs to fit on the same line as the world map, and this may not be possible in the end. 
 
 Overall, our design turned out much like our first design sketches. More changes will come, but the next and top priority will be to create updating datasets. The visualization will not be complete without the ability to compare data. Each team member contributed to this prototype and helped to make this visualization possible. 
+
+Finished Prototype:
+![Image sketch](ProposalSketches/FinishedPrototype.png)
+![Image sketch](ProposalSketches/ComparisonGraph)
+
