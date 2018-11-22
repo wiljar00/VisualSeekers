@@ -422,7 +422,7 @@ We then continued by creating a variety divs to separate the project into separa
 Our first design attempts resulted in the following image. 
 ![Image sketch](ProposalSketches/firstPrototype.png)
 We made more changes and added a stacked graph. 
-![Image sketch](ProposalSketches/firstProtoype2.png.png)
+![Image sketch](ProposalSketches/firstProtoype2.png)
 
 Using the datasets we created, we began with a stacked bar graph. This graph is the first visualization of obesity in male and female adults throughout the world. We created this visualization in the comparison section with the assumption in mind that obesity has been increasing throuought the world in both men and women. The Stacked bar chart proved our assumption right by showing a significant trend. 
 
