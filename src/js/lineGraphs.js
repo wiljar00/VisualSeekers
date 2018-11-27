@@ -3,7 +3,7 @@ class LineGraph{
 
     }
 
-    updateLineGraphs(FemaleData,MaleData){
+    updateLineGraphs(obeseList,vegConsumptionList,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList){
 
         var self=this;
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
@@ -11,10 +11,17 @@ class LineGraph{
         height = 400 - margin.top - margin.bottom;
 
         let years=[];
-        FemaleData.Year.map(function(d){
+        let ObeseDataSet=[];
+        console.log(obeseList);
+        obeseList.map(function(d){
          years.push(d.Year)
            }
         );
+        obeseList.map(function(d){
+         ObeseDataSet.push(d.Indicator)
+           }
+        );
+        console.log(ObeseDataSet,'ObeseDataSet');
            let maxYears = d3.max(years);
 
         let xAxisScale=d3.scaleBand()
@@ -71,12 +78,12 @@ class LineGraph{
 
         var line = d3.line()
         .x(function(d, i) { return xScale(i); }) 
-        .y(function(d) { return yScale(d.y); })  
+        .y(function(d) { return yScale(d.Indicator); })
         .curve(d3.curveMonotoneX) 
     
 
         // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
-        var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.4)() } })
+        var dataset = ObeseDataSet;
 
 //////////////////////////////////////////////////////////
 //          /Sample Line (not tied to our data)          //
@@ -129,128 +136,128 @@ class LineGraph{
 
 
 
-        var line2 = d3.line()
-        .x(function(d, i) { return xScale(i); }) 
-        .y(function(d) { return yScale(d.y); })  
-        .curve(d3.curveMonotoneX) 
+        // var line2 = d3.line()
+        // .x(function(d, i) { return xScale(i); })
+        // .y(function(d) { return yScale(d.y); })
+        // .curve(d3.curveMonotoneX)
+        //
+        // var dataset2 = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.3)() } })
 
-        var dataset2 = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.3)() } })
+
+        // var lineGraph2 = d3.select("#lineChart2")
+        // // .data(obesityData)
+        // // .enter()
+        // // .append("path")
+        // // .attr("d", )
+        // // .attr("d", valueline(data));
+        //
+        // lineGraph2.append("path")
+        // .datum(dataset2)
+        // .attr("class", "line")
+        // .attr("d", line2)
+        // .attr("transform", "translate(" + 25 + ",0)")
+        //
+        // // Add the X Axis
+        // lineGraph2.append("g")
+        // .attr("class", "x axis")
+        // .attr("transform", "translate(0," + 365 + ")")
+        // // .attr("transform", "rotate(90)")
+        // .call(xAxis)
+        // .selectAll("text")
+        // .attr("y", 0)
+        // .attr("x", 9)
+        // .attr("dy", ".35em")
+        // .attr("transform", "rotate(90)")
+        // .style("text-anchor", "start")
+        // .style("font-size", "10px")
+        //
+        // // Add the Y Axis
+        // lineGraph2.append("g")
+        // .attr("class", "y axis")
+        // .attr("transform", "translate(" + 25 + ",-35)")
+        // .call(yAxis);
+        //
+        // var line3 = d3.line()
+        //     .x(function(d, i) { return xScale(i); })
+        //     .y(function(d) { return yScale(d.y); })
+        //     .curve(d3.curveMonotoneX)
+        //
+        // var dataset3 = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.3)() } })
+        //
+        //
+        // var lineGraph3 = d3.select("#lineChart3")
+        // // .data(obesityData)
+        // // .enter()
+        // // .append("path")
+        // // .attr("d", )
+        // // .attr("d", valueline(data));
+        //
+        // lineGraph3.append("path")
+        // .datum(dataset3)
+        // .attr("class", "line")
+        // .attr("d", line3)
+        // .attr("transform", "translate(" + 25 + ",0)")
+        //
+        // // Add the X Axis
+        // lineGraph3.append("g")
+        // .attr("class", "x axis")
+        // .attr("transform", "translate(0," + 365 + ")")
+        // // .attr("transform", "rotate(90)")
+        // .call(xAxis)
+        // .selectAll("text")
+        // .attr("y", 0)
+        // .attr("x", 9)
+        // .attr("dy", ".35em")
+        // .attr("transform", "rotate(90)")
+        // .style("text-anchor", "start")
+        // .style("font-size", "10px")
+        //
+        // // Add the Y Axis
+        // lineGraph3.append("g")
+        // .attr("class", "y axis")
+        // .attr("transform", "translate(" + 25 + ",-35)")
+        // .call(yAxis);
+        //
+        // var line4 = d3.line()
+        // .x(function(d, i) { return xScale(i); })
+        // .y(function(d) { return yScale(d.y); })
+        // .curve(d3.curveMonotoneX)
+
+        // var dataset4 = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.3)() } })
 
 
-        var lineGraph2 = d3.select("#lineChart2")
+        // var lineGraph4 = d3.select("#lineChart4")
         // .data(obesityData)
         // .enter()
         // .append("path")
         // .attr("d", )
         // .attr("d", valueline(data));
 
-        lineGraph2.append("path")
-        .datum(dataset2) 
-        .attr("class", "line")
-        .attr("d", line2)
-        .attr("transform", "translate(" + 25 + ",0)")
+        // lineGraph4.append("path")
+        // .datum(dataset4)
+        // .attr("class", "line")
+        // .attr("d", line4)
+        // .attr("transform", "translate(" + 25 + ",0)")
 
         // Add the X Axis
-        lineGraph2.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + 365 + ")")
+        // lineGraph4.append("g")
+        // .attr("class", "x axis")
+        // .attr("transform", "translate(0," + 365 + ")")
+        // // .attr("transform", "rotate(90)")
+        // .call(xAxis)
+        // .selectAll("text")
+        // .attr("y", 0)
+        // .attr("x", 9)
+        // .attr("dy", ".35em")
         // .attr("transform", "rotate(90)")
-        .call(xAxis)
-        .selectAll("text")
-        .attr("y", 0)
-        .attr("x", 9)
-        .attr("dy", ".35em")
-        .attr("transform", "rotate(90)")
-        .style("text-anchor", "start")
-        .style("font-size", "10px")
+        // .style("text-anchor", "start")
+        // .style("font-size", "10px")
 
         // Add the Y Axis
-        lineGraph2.append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(" + 25 + ",-35)")
-        .call(yAxis);
-
-        var line3 = d3.line()
-            .x(function(d, i) { return xScale(i); }) 
-            .y(function(d) { return yScale(d.y); })  
-            .curve(d3.curveMonotoneX) 
-
-        var dataset3 = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.3)() } })
-
-
-        var lineGraph3 = d3.select("#lineChart3")
-        // .data(obesityData)
-        // .enter()
-        // .append("path")
-        // .attr("d", )
-        // .attr("d", valueline(data));
-
-        lineGraph3.append("path")
-        .datum(dataset3) 
-        .attr("class", "line")
-        .attr("d", line3)
-        .attr("transform", "translate(" + 25 + ",0)")
-
-        // Add the X Axis
-        lineGraph3.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + 365 + ")")
-        // .attr("transform", "rotate(90)")
-        .call(xAxis)
-        .selectAll("text")
-        .attr("y", 0)
-        .attr("x", 9)
-        .attr("dy", ".35em")
-        .attr("transform", "rotate(90)")
-        .style("text-anchor", "start")
-        .style("font-size", "10px")
-
-        // Add the Y Axis
-        lineGraph3.append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(" + 25 + ",-35)")
-        .call(yAxis);
-
-        var line4 = d3.line()
-        .x(function(d, i) { return xScale(i); }) 
-        .y(function(d) { return yScale(d.y); })  
-        .curve(d3.curveMonotoneX) 
-
-        var dataset4 = d3.range(n).map(function(d) { return {"y": d3.randomUniform(.3)() } })
-
-
-        var lineGraph4 = d3.select("#lineChart4")
-        // .data(obesityData)
-        // .enter()
-        // .append("path")
-        // .attr("d", )
-        // .attr("d", valueline(data));
-
-        lineGraph4.append("path")
-        .datum(dataset4) 
-        .attr("class", "line")
-        .attr("d", line4)
-        .attr("transform", "translate(" + 25 + ",0)")
-
-        // Add the X Axis
-        lineGraph4.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + 365 + ")")
-        // .attr("transform", "rotate(90)")
-        .call(xAxis)
-        .selectAll("text")
-        .attr("y", 0)
-        .attr("x", 9)
-        .attr("dy", ".35em")
-        .attr("transform", "rotate(90)")
-        .style("text-anchor", "start")
-        .style("font-size", "10px")
-
-        // Add the Y Axis
-        lineGraph4.append("g")
-        .attr("class", "y axis")
-        .attr("transform", "translate(" + 25 + ",-35)")
-        .call(yAxis);
+        // lineGraph4.append("g")
+        // .attr("class", "y axis")
+        // .attr("transform", "translate(" + 25 + ",-35)")
+        // .call(yAxis);
     
     }
 
