@@ -70,6 +70,14 @@ class obesityDistributionGraph{
             .on("mouseover",d=>self.GetTooltipData(d));
         obesityChart.selectAll("rect")
             .data(obesityData)
+            .attr("x",d=>d.x)
+            .attr("y",m=>235+40*m.y)
+            .attr("height",25)
+            .attr("width",m=>xAxisScale(m.Indicator))
+            .attr("class",d=>d.Gender=='F'?"female":"male")
+            .on("mouseover",d=>self.GetTooltipData(d));
+        obesityChart.selectAll("rect")
+            .data(obesityData)
             .exit()
             .remove()
     }

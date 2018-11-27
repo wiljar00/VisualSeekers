@@ -277,7 +277,6 @@
     /*box-sizing: border-box;*/
     display: inline;
     font-size: 10px;
-    width: 100%;
     /*line-height: 1;*/
     color: rgba(0, 0, 0, 0.8);
     position: relative;
@@ -334,21 +333,21 @@
     fill : steelblue;
     stroke: black;
     stroke-width : 2px;
-    r : 8;
+    /* r : 8; */
 }
 
 .yearCircleSelected {
     fill : red;
     stroke: black;
     stroke-width : 2px;
-    r : 15;
+    /* r : 15; */
 }
 
 .yearContextCircle {
     fill : steelblue;
     stroke: black;
     stroke-width : 2px;
-    r : 3;
+    /* r : 3; */
 }
 
 .disabled {
@@ -390,5 +389,66 @@
     text-align : left;
 }
 
-.map-selected {
+
+body, html {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+   padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+   /* padding: 100px 20px;*/
+  
+  height: 100%;
+}
+.female{
+    fill: #45AD6A;
+    color: #45AD6A;
+    text-anchor:start;
+}
+.male{
+    fill: #de2d26;
+    color: #de2d26;
+    text-anchor:end;
+}
+
+#map-view {
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-left-style: solid;
+}
+.countries {
+    stroke: #f7f7f7;
+    fill: #d9d9d9;
+}
+.selected {
+    fill: #d20a11;
+}
+
+.line {
+    fill: none;
+    stroke: blue;
+    stroke-width: 3;
 }
