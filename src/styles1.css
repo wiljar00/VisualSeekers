@@ -40,3 +40,18 @@ body, html {
     color: #de2d26;
     text-anchor:end;
 }
+
+#map-view {
+ //   margin-left: 750px;
+  //  width: 910px;
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-left-style: solid;
+}
+.countries {
+    stroke: #f7f7f7;
+    fill: #d9d9d9;
+}
+.selected {
+    fill: #d20a11;
+}
