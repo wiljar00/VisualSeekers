@@ -82,19 +82,19 @@ d3.csv("data/population.csv").then(population => {
  function Onclick() {
      CountryCode = d3.select(".selected")._groups[0][0].id;
      if (CountryCode != null) {
+         obeseData= obeseList.filter(m => m.Code == CountryCode);
+         vegetableData = vegConsumptionList.filter(m => m.Code == CountryCode);
+         fruitData = fruitConsumptionList.filter(m => m.Code == CountryCode);
+         seafoodData = seafoodConsumptionList.filter(m => m.Code == CountryCode);
+         lifeExpectancyData = lifeExpectancyList.filter(m => m.Code == CountryCode);
          MalePercentage = shareOfMalesList.filter(m => m.Code == CountryCode);
          FemalePercentage = shareOfFemalesList.filter(m => m.Code == CountryCode);
          FemaleData = FemalePercentage[0];
          MaleData = MalePercentage[0];
-         obeseList= obeseList.filter(m => m.Code == CountryCode);
-         vegConsumptionList = vegConsumptionList.filter(m => m.Code == CountryCode);
-         fruitConsumptionList = fruitConsumptionList.filter(m => m.Code == CountryCode);
-         seafoodConsumptionList = seafoodConsumptionList.filter(m => m.Code == CountryCode);
-         lifeExpectancyList = lifeExpectancyList.filter(m => m.Code == CountryCode);
          let obesityDistribution = new obesityDistributionGraph();
          obesityDistribution.UpdateGraph(FemaleData, MaleData);
          let linGraphs=new LineGraph();
-         linGraphs.updateLineGraphs(obeseList,vegConsumptionList,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList)
+         linGraphs.updateLineGraphs(obeseData[0],vegetableData[0],fruitData[0],seafoodData[0],lifeExpectancyData[0])
      }
  }
 // FetchData();
@@ -125,29 +125,7 @@ function FormatData(data)
 }
   return List;
 }
-//
-//
 // async function FetchData(){
 //     // console.log('this first');
 
-// // callback()
-//  }
-//
-//
-//
-// async function CallObjects(){
-//     CountryCode=d3.select(".selected")._groups[0][0].id;
-//     if(CountryCode!=null) {
-//         MalePercentage = shareOfMalesList.filter(m => m.Code == CountryCode);
-//         FemalePercentage = shareOfFemalesList.filter(m => m.Code == CountryCode);
-//         FemaleData = FemalePercentage[0];
-//         MaleData = MalePercentage[0];
-//         vegConsumption = vegConsumptionList.filter(m => m.Code == 'CHN');
-//         let obesityDistribution = new obesityDistributionGraph();
-//         obesityDistribution.UpdateGraph(FemaleData, MaleData);
-//     }
-//
-//     let lineGraph = new LineGraph();
-//     lineGraph.updateLineGraphs(FemaleData,MaleData);
-// }
-//
+

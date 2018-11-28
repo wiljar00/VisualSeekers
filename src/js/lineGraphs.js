@@ -3,7 +3,7 @@ class LineGraph{
 
     }
 
-    updateLineGraphs(obeseList,vegConsumptionList,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList){
+    updateLineGraphs(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList){
 
         var self=this;
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
@@ -16,33 +16,33 @@ class LineGraph{
         let fruitConsumptionDataSet=[];
         let seafoodConsumptionDataSet=[];
         let lifeExpectancyDataSet=[];
-        obeseList[0].Year.map(function(d){
+        obeseList.Year.map(function(d){
          years.push(d.Year)
            }
         );
-        obeseList[0].Year.map(function(d){
+        obeseList.Year.map(function(d){
          ObeseDataSet.push(d.Indicator)
            }
         );
         console.log(ObeseDataSet,'ObeseDataSet');
-        vegConsumptionList[0].Year.map(function(d){
+        vegetableData.Year.map(function(d){
          vegConsumptionDataSet.push(d.Indicator)
            }
         );
         console.log(vegConsumptionDataSet,'vegConsumptionDataSet');
-        fruitConsumptionList[0].Year.map(function(d){
+        fruitConsumptionList.Year.map(function(d){
          fruitConsumptionDataSet.push(d.Indicator)
            }
         );
         console.log(fruitConsumptionDataSet,'fruitConsumptionDataSet');
-        console.log(seafoodConsumptionList[0],'seafoodConsumptionDataSet');
-        seafoodConsumptionList[0].Year.map(function(d){
+        console.log(seafoodConsumptionList,'seafoodConsumptionDataSet');
+        seafoodConsumptionList.Year.map(function(d){
          seafoodConsumptionDataSet.push(d.Indicator)
            }
         );
         console.log(seafoodConsumptionDataSet,'seafoodConsumptionDataSet');
 
-        lifeExpectancyList[0].Year.map(function(d){
+        lifeExpectancyList.Year.map(function(d){
          lifeExpectancyDataSet.push(d.Indicator)
            }
         );
@@ -111,43 +111,129 @@ class LineGraph{
         .curve(d3.curveMonotoneX);
 
         // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
-        var dataset = obeseList[0].Year;
-        var vegetableDataset=vegConsumptionList[0].Year;
-        var fruitDataSet=fruitConsumptionList[0].Year;
-        var seaFoodDataSet=seafoodConsumptionList[0].Year;
-        var lifeExpectancySet=lifeExpectancyList[0].Year;
+        var dataset = obeseList.Year;
+        var vegetableDataset=vegetableData.Year;
+        var fruitDataSet=fruitConsumptionList.Year;
+        var seaFoodDataSet=seafoodConsumptionList.Year;
+        var lifeExpectancySet=lifeExpectancyList.Year;
         //Create the SVG Viewport
         var lineGraph1 = d3.select("#obesitylineChart");
         var vegLineGraph = d3.select("#vegetationLineChart");
         var fruitLineGraph=d3.select("#fruitlineChart");
         var seaFoodGraph=d3.select("#seaFoodChart");
         var lifeExpectancyGraph=d3.select("#lifeExpectancyChart");
+        //append the line graph
+        lineGraph1.select("#obesityCurve").remove();
+        vegLineGraph.select("#VegetavbleCurve").remove();
+        fruitLineGraph.select("#FruitCurve").remove();
+        seaFoodGraph.select("#seaFoodCurve").remove();
+        lifeExpectancyGraph.select("#LifeExpectancyCurve").remove();
             lineGraph1.append("path")
             .datum(dataset)
-            .attr("class", "line")
+            .classed("line", true)
             .attr("d", line)
+                .attr("id","obesityCurve")
             .attr("transform", "translate(" + 25 + ",0)");
+             lineGraph1.selectAll("circle")
+            .data(dataset).enter()
+                 .append("circle")
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
+             lineGraph1.selectAll("circle")
+            .data(dataset)
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
             vegLineGraph.append("path")
             .datum(vegetableDataset)
             .attr("class", "line")
             .attr("d", Vegetableline)
+                .attr("id","VegetavbleCurve")
             .attr("transform", "translate(" + 25 + ",0)");
+            vegLineGraph.selectAll("circle")
+            .data(vegetableDataset).enter()
+                 .append("circle")
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
+            vegLineGraph.selectAll("circle").exit().remove();
+            vegLineGraph.selectAll("circle")
+            .data(vegetableDataset)
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>vegyAxisScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
             fruitLineGraph.append("path")
             .datum(fruitDataSet)
             .attr("class", "line")
             .attr("d", FruitLine)
+                .attr("id","FruitCurve")
             .attr("transform", "translate(" + 25 + ",0)");
+            fruitLineGraph.selectAll("circle")
+            .data(fruitDataSet).enter()
+                 .append("circle")
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
+             fruitLineGraph.selectAll("circle")
+            .data(fruitDataSet)
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>fruitAxisScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
             seaFoodGraph.append("path")
             .datum(seaFoodDataSet)
             .attr("class", "line")
             .attr("d", seaFoodLine)
+                .attr("id","seaFoodCurve")
             .attr("transform", "translate(" + 25 + ",0)");
+             seaFoodGraph.selectAll("circle")
+            .data(seaFoodDataSet).enter()
+                 .append("circle")
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>seaFoodAxisScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
+              seaFoodGraph.selectAll("circle")
+            .data(seaFoodDataSet)
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
             lifeExpectancyGraph.append("path")
             .datum(lifeExpectancySet)
             .attr("class", "line")
             .attr("d", lifeExpectancyLine)
+                .attr("id","LifeExpectancyCurve")
             .attr("transform", "translate(" + 25 + ",0)");
-
+            lifeExpectancyGraph.selectAll("circle")
+            .data(lifeExpectancySet).enter()
+                 .append("circle")
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
+            lifeExpectancyGraph.selectAll("circle")
+            .data(lifeExpectancySet)
+            .attr("cx", d=>xAxisScale(d.Year))
+            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("r", 2.5)
+                 .attr("fill","black")
+                 .attr("class",d=>d.Year);
         // Add the X Axis
         lineGraph1.append("g")
             .attr("class", "x axis")
