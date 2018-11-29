@@ -59,7 +59,7 @@ class LineGraph{
             .domain([100, 0])
             .range([0, 200]);
         let vegyAxisScale=d3.scaleLinear()
-            .domain([200, 0])
+            .domain([350, 0])
             .range([0, 200]);
         let fruitAxisScale=d3.scaleLinear()
             .domain([500, 0])
@@ -86,28 +86,28 @@ class LineGraph{
             .range([0,200]); // output
 
         var line = d3.line()
-        .x(function(d) { return xAxisScale(d.Year); })
-        .y(function(d) { return yScale(d.Indicator)-41; })
+        .x(function(d) { return xAxisScale(d.Year)+8; })
+        .y(function(d) { return yScale(d.Indicator)+12; })
         .curve(d3.curveMonotoneX);
 
         var Vegetableline = d3.line()
-        .x(function(d) { return xAxisScale(d.Year); })
-        .y(function(d) { return vegyAxisScale(d.Indicator)-41; })
+        .x(function(d) { return xAxisScale(d.Year)+8; })
+        .y(function(d) { return vegyAxisScale(d.Indicator)+12; })
         .curve(d3.curveMonotoneX);
 
         var FruitLine = d3.line()
-        .x(function(d) { return xAxisScale(d.Year); })
-        .y(function(d) { return fruitAxisScale(d.Indicator)-41; })
+        .x(function(d) { return xAxisScale(d.Year)+8; })
+        .y(function(d) { return fruitAxisScale(d.Indicator)+12; })
         .curve(d3.curveMonotoneX);
 
         var seaFoodLine = d3.line()
-        .x(function(d) { return xAxisScale(d.Year); })
-        .y(function(d) { return seaFoodAxisScale(d.Indicator)-41; })
+        .x(function(d) { return xAxisScale(d.Year)+8; })
+        .y(function(d) { return seaFoodAxisScale(d.Indicator)+12; })
         .curve(d3.curveMonotoneX);
 
         var lifeExpectancyLine = d3.line()
-        .x(function(d) { return xAxisScale(d.Year); })
-        .y(function(d) { return lifeExpectancyScale(d.Indicator)-41; })
+        .x(function(d) { return xAxisScale(d.Year)+8; })
+        .y(function(d) { return lifeExpectancyScale(d.Indicator)+12; })
         .curve(d3.curveMonotoneX);
 
         // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
@@ -133,19 +133,20 @@ class LineGraph{
             .classed("line", true)
             .attr("d", line)
                 .attr("id","obesityCurve")
-            .attr("transform", "translate(" + 25 + ",0)");
+            .attr("transform", "translate(" + 45 + ",0)");
              lineGraph1.selectAll("circle")
             .data(dataset).enter()
                  .append("circle")
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>yScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
+             lineGraph1.selectAll("circle").data(dataset).exit().remove()
              lineGraph1.selectAll("circle")
             .data(dataset)
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>yScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -154,20 +155,20 @@ class LineGraph{
             .attr("class", "line")
             .attr("d", Vegetableline)
                 .attr("id","VegetavbleCurve")
-            .attr("transform", "translate(" + 25 + ",0)");
+            .attr("transform", "translate(" + 45 + ",0)");
             vegLineGraph.selectAll("circle")
             .data(vegetableDataset).enter()
                  .append("circle")
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>yScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
-            vegLineGraph.selectAll("circle").exit().remove();
+            vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
             vegLineGraph.selectAll("circle")
             .data(vegetableDataset)
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>vegyAxisScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -176,19 +177,20 @@ class LineGraph{
             .attr("class", "line")
             .attr("d", FruitLine)
                 .attr("id","FruitCurve")
-            .attr("transform", "translate(" + 25 + ",0)");
+            .attr("transform", "translate(" + 45 + ",0)");
             fruitLineGraph.selectAll("circle")
             .data(fruitDataSet).enter()
                  .append("circle")
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>yScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
+            fruitLineGraph.selectAll("circle").data(fruitDataSet).exit().remove();
              fruitLineGraph.selectAll("circle")
             .data(fruitDataSet)
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>fruitAxisScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -197,19 +199,20 @@ class LineGraph{
             .attr("class", "line")
             .attr("d", seaFoodLine)
                 .attr("id","seaFoodCurve")
-            .attr("transform", "translate(" + 25 + ",0)");
+            .attr("transform", "translate(" + 45 + ",0)");
              seaFoodGraph.selectAll("circle")
             .data(seaFoodDataSet).enter()
                  .append("circle")
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>seaFoodAxisScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
+              seaFoodGraph.selectAll("circle").data(seaFoodDataSet).exit().remove();
               seaFoodGraph.selectAll("circle")
             .data(seaFoodDataSet)
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -218,26 +221,27 @@ class LineGraph{
             .attr("class", "line")
             .attr("d", lifeExpectancyLine)
                 .attr("id","LifeExpectancyCurve")
-            .attr("transform", "translate(" + 25 + ",0)");
+            .attr("transform", "translate(" + 45 + ",0)");
             lifeExpectancyGraph.selectAll("circle")
             .data(lifeExpectancySet).enter()
                  .append("circle")
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>yScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
+            lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove()
             lifeExpectancyGraph.selectAll("circle")
             .data(lifeExpectancySet)
-            .attr("cx", d=>xAxisScale(d.Year))
-            .attr("cy", d=>yScale(d.Indicator)-41)
+            .attr("cx", d=>xAxisScale(d.Year)+50)
+            .attr("cy", d=>yScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
         // Add the X Axis
         lineGraph1.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
+            .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
             .selectAll("text")
@@ -250,8 +254,7 @@ class LineGraph{
             .style("font-size", "10px");
         vegLineGraph.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
-            // .attr("transform", "rotate(90)")
+            .attr("transform", "translate(40," + 210 + ")")// change here for x axis
             .call(xAxis)
             .selectAll("text")
             .attr("y", 0)
@@ -263,7 +266,7 @@ class LineGraph{
             .style("font-size", "10px");
         fruitLineGraph.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
+            .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
             .selectAll("text")
@@ -276,7 +279,7 @@ class LineGraph{
             .style("font-size", "10px");
         seaFoodGraph.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
+            .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
             .selectAll("text")
@@ -289,7 +292,7 @@ class LineGraph{
             .style("font-size", "10px");
         lifeExpectancyGraph.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
+            .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
             .selectAll("text")
@@ -304,23 +307,23 @@ class LineGraph{
         // Add the Y Axis
         lineGraph1.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 25 + ",-41)")
+            .attr("transform", "translate(" + 50 + ",10)")
             .call(yAxis);
         vegLineGraph.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
+            .attr("transform", "translate(" + 50 + ",10)")// y axis
             .call(vegyAxis);
         fruitLineGraph.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
+            .attr("transform", "translate(" + 50 + ",10)")
             .call(fruityAxis);
         seaFoodGraph.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
+            .attr("transform", "translate(" + 50 + ",10)")
             .call(SeafoodyAxis);
         lifeExpectancyGraph.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
+            .attr("transform", "translate(" + 50 + ",10)")
             .call(LifeExpectancyAxis);
     }
 
