@@ -22,62 +22,61 @@
     <header>
         <h1>Obesity Trends</h1>
     </header>
-    <div>
-        <div id="accordion" role="tablist">
-            <div class="container-fluid" id="mainContainer" >
-                <div class="card">
-                    <div class="card-header" role="tab" id="headingOne">
-                        <button class="tablink" onclick="openPage('mapView', this, 'red')">MapView</button>
-                        <button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Comparison View</button>
-                        </ul>
-                    </div>
-                    <!--<div class="tab-content">-->
-                    <!--<div role="tabpanel" class="tab-pane fade in active show" id="mapViewTab">-->
-                    <!--<button class="tablink" onclick="openPage('mapView', this, 'red')">Map1</button>-->
-                    <!--<button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Map2</button>-->
-                    <!--<button class="tablink" onclick="openPage('mapView', this, 'red')">Map3</button>-->
-                    <!--<button class="tablink" onclick="openPage('comparisionView', this, 'green')" id="defaultOpen">Map4</button>-->
-                    <!--</div>-->
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div >
+
+<h3>Visualization for Obesity trends depends on various attributes</h3>
+
+<div align="center" class="svg-container">
+    <svg width="1000" height="700" id="mapSvg" >
+
+        <g id="map" > </g>
+    </svg>
+
+</div>
+
+<div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group" align="left">
+    <button type="button" class="btn btn-default" id="zoom-in"><span class="fa fa-search-plus" aria-hidden="true"></span></button>
+    <button type="button" class="btn btn-default" id="zoom-out"><span class="fa fa-search-minus" aria-hidden="true"></span></button>
+    <button type="button" class="btn btn-default" id="reset"><span class="fa fa-retweet" aria-hidden="true"></span></button>
+</div>
+
 <div >
     <h4 align="left">Single Attributes:</h4>
     <div align="left">
         <div>
             <h5>VegetableConsumption:</h5>
-    <svg width="900" height="300" id="vegetationLineChart">
-    </svg>
-              </div>
-          <div>
-               <h5>FruitConsumption:</h5>
-    <svg width="900" height="200" id="fruitlineChart">
-    </svg>
-                </div>
+            <svg width="900" height="300" id="vegetationLineChart">
+            </svg>
+        </div>
+        <div>
+            <h5>FruitConsumption:</h5>
+            <svg width="900" height="200" id="fruitlineChart">
+            </svg>
+        </div>
         <div>
             <h5>SeaFoodConsumption:</h5>
-    <svg width="900" height="200" id="seaFoodChart">
-    </svg>
-                </div>
-         <div>
-             <h5>LifeExpectancy:</h5>
-    <svg width="900" height="200" id="lifeExpectancyChart">
-    </svg>
-                </div>
-          <div>
-              <h5>Obesity:</h5>
-    <svg width="900" height="200" id="obesitylineChart">
-    </svg>
-                </div>
+            <svg width="900" height="200" id="seaFoodChart">
+            </svg>
+        </div>
+        <div>
+            <h5>LifeExpectancy:</h5>
+            <svg width="900" height="200" id="lifeExpectancyChart">
+            </svg>
+        </div>
+        <div>
+            <h5>Obesity:</h5>
+            <svg width="900" height="200" id="obesitylineChart">
+            </svg>
+        </div>
     </div>
     <div align="right">
-    <svg width="800" height="600" id="map-view" class="view" align="right">
+        <svg width="800" height="600" id="map-view" class="view" align="right">
 
-        <g id="map"> </g>
-    </svg>
+            <g id="map"> </g>
+        </svg>
     </div>
+</div>
 </div>
 <hr>
 
