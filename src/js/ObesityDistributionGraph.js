@@ -21,8 +21,8 @@ class obesityDistributionGraph{
       );
        console.log(years,'years');
         let xAxisScale=d3.scaleLinear()
-    .domain([0,50])
-    .range([0, 3000]);
+    .domain([0,200])
+    .range([0, 1500]);
         let yAxisScale=d3.scaleBand()
     .domain(years).padding(0.5)
     .range([0, 1500]);
