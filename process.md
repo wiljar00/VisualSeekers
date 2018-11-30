@@ -1,5 +1,5 @@
 
-**Final Project Proposal**
+**CS5890 Final Project - Team VisualSeekers**
 -
   
 
@@ -455,7 +455,15 @@ After receiving feedback on our prototype, various changes needed to be made. Ou
 
 We began by reorganizing components of our visualization. First, we changed our projection map to a Mercator map. This type of map is much more familiar to the average user than the original map we were using. We added different styling to the world map as well to create a more visually pleasing presentation. The map is placed at the top of the visualization and the functionality was added to create change current working datasets. Tooltip functionality was added to show the name of the country when hovering over each country. 
 
+![Image sketch](ProposalSketches/newMap.png)
+
+Now, when a country is selected, the graphs are updated according to the dataset associated with that country. 
+
+![Image sketch](ProposalSketches/mapSelection.png)
+
 The line graphs were linked to the datasets selected using the world map. Scaling issues required the most work at this point. The correct data is showing up, but to make it more readable or interpretable to the user, different scaling functions needed to be implemented. The line graphs were also arranged horizontally in the prototype. This was changed to a vertical column of line graphs along the left side of the visualization below the world map. Trend lines show in the line graphs, and points were added where each year crossed with the trend line. This was done to enable tooltip functionality should the user desire to see specific information concerning that year and attribute. 
+
+![Image sketch](ProposalSketches/newLineGraph.png)
 
 Parallel to the line graphs, scatter plot graphs were added. These graphs were implemented using the obesity dataset as the "x" axis, and each individual attribute as the "y" axis. This was done to show any correlation between attributes and obesity in a more clear way. These attributes were placed to the right of the line graphs to ensure a smooth visual interpretation of any potential correlations. 
 
