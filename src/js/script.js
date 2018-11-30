@@ -174,6 +174,8 @@ function Onclick() {
         obesityDistribution.UpdateGraph(FemaleData, MaleData);
         let linGraphs = new LineGraph();
         linGraphs.updateLineGraphs(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], lifeExpectancyData[0])
+        let scatterPlot  = new ScatterPlot();
+        scatterPlot.updateScatterPlot(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], lifeExpectancyData[0])
     }
 }
 
@@ -209,5 +211,4 @@ function FormatData(data)
 }
 // async function FetchData(){
 //     // console.log('this first');
-
 
