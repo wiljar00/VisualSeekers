@@ -175,18 +175,10 @@ function Onclick() {
         let linGraphs = new LineGraph();
         linGraphs.updateLineGraphs(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], lifeExpectancyData[0])
         let scatterPlot  = new ScatterPlot();
-        scatterPlot.updateScatterPlot(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], lifeExpectancyData[0])
+        scatterPlot.updateScatterPlot(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], false)
     }
 }
 
-
-
-// FetchData();
-//
-// setTimeout(CallObjects, 400);
-//
-
-//
 function FormatData(data)
 {
     var List=[];

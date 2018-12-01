@@ -2,10 +2,7 @@ class ScatterPlot{
     constructor(){
     }
 
-    // let scatterPlot  = new ScatterPlot();
-    // scatterPlot.updateScatterPlot(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], lifeExpectancyData[0])
-
-    updateScatterPlot(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList){
+    updateScatterPlot(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,IsComparisonOn){
     
         var self=this;
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
@@ -13,87 +10,67 @@ class ScatterPlot{
         height = 400 - margin.top - margin.bottom;
 
         let years=[];
-        let ObeseDataSet=[];
-        let vegConsumptionDataSet=[];
-        let fruitConsumptionDataSet=[];
-        let seafoodConsumptionDataSet=[];
-        let lifeExpectancyDataSet=[];
+        let ObeseVegDataSet=[];
+        let ObeseFruitDataSet=[];
+        let ObeseSeafoodDataSet=[];
         obeseList.Year.map(function(d){
-            years.push(d.Year)
+            years=[1977,1987,1997,2007]
             }
         );
-        obeseList.Year.map(function(d){
-         ObeseDataSet.push(d.Indicator)
+        obeseList=obeseList.Year.filter(m=>m.Year%10==7);
+        obeseList.map(function(d){
+            var object={ObeseData:d.Indicator};
+            ObeseVegDataSet.push(object);
+            ObeseFruitDataSet.push(object);
+            ObeseSeafoodDataSet.push(object);
            }
         );
-        vegetableData.Year.map(function(d){
-         vegConsumptionDataSet.push(d.Indicator)
+        vegetableData=vegetableData.Year.filter(m=>m.Year%10==7);
+        vegetableData.map(function(d,i){
+            ObeseVegDataSet[i].VegData=d.Indicator
+           });
+        fruitConsumptionList=fruitConsumptionList.Year.filter(m=>m.Year%10==7);
+        fruitConsumptionList.map(function(d,i){
+            ObeseFruitDataSet[i].FruitData=d.Indicator
            }
         );
-        fruitConsumptionList.Year.map(function(d){
-         fruitConsumptionDataSet.push(d.Indicator)
-           }
-        );
-        seafoodConsumptionList.Year.map(function(d){
-         seafoodConsumptionDataSet.push(d.Indicator)
-           }
-        );
-        lifeExpectancyList.Year.map(function(d){
-         lifeExpectancyDataSet.push(d.Indicator)
+        seafoodConsumptionList=seafoodConsumptionList.Year.filter(m=>m.Year%10==7);
+        seafoodConsumptionList.map(function(d,i){
+         ObeseSeafoodDataSet[i].SeaFoodData=d.Indicator
            }
         );
 
-        let xAxisObeseScale=d3.scaleBand()
-            .domain(ObeseDataSet)
-            .range([10, 700]);
-        
-        let maxVeg = d3.max(vegConsumptionDataSet);
-
-        let yVegyAxisScale=d3.scaleBand()
-            .domain([maxVeg, 0])
+        let yAxisObeseScale=d3.scaleLinear()
+            .domain([50,0])
             .range([0, 200]);
-
-        let yFruitAxisScale=d3.scaleLinear()
-            .domain(fruitConsumptionDataSet)
+        let xVegyAxisScale=d3.scaleLinear()
+            .domain([0, 350])
             .range([0, 200]);
-
-        let ySeaFoodAxisScale=d3.scaleLinear()
-            .domain(seafoodConsumptionDataSet)
+        let xFruitAxisScale=d3.scaleLinear()
+            .domain([0,500])
             .range([0, 200]);
-
-        let yLifeExpectancyScale=d3.scaleLinear()
-            .domain(lifeExpectancyDataSet)
+        let xSeaFoodAxisScale=d3.scaleLinear()
+            .domain([0,50])
             .range([0, 200]);
+        let obeseYAxis = d3.axisLeft(yAxisObeseScale);
+        let vegxAxis = d3.axisBottom(xVegyAxisScale);
+        let FruitxAxis = d3.axisBottom(xFruitAxisScale);
+        let SeafoodxAxis=d3.axisBottom(xSeaFoodAxisScale);
 
-        let xAxis = d3.axisBottom(xAxisObeseScale);
-        let vegyAxis = d3.axisLeft(yVegyAxisScale);
-        let fruityAxis = d3.axisLeft(yFruitAxisScale);
-        let SeafoodyAxis=d3.axisLeft(ySeaFoodAxisScale);
-        let LifeExpectancyAxis=d3.axisLeft(yLifeExpectancyScale);
-        vegyAxis.scale(yVegyAxisScale);
-        fruityAxis.scale(yFruitAxisScale);
-        SeafoodyAxis.scale(ySeaFoodAxisScale);
-        LifeExpectancyAxis.scale(yLifeExpectancyScale);
-
-        var yScale = d3.scaleLinear()
-            .domain([100, 0]) // input
-            .range([0,200]); // output
+        vegxAxis.scale(xVegyAxisScale);
+        FruitxAxis.scale(xFruitAxisScale);
+        SeafoodxAxis.scale(xSeaFoodAxisScale);
 
         var vegetablePlot = d3.select("#vegetablePlot");
         var fruitPlot = d3.select("#fruitPlot");
         var seaFoodPlot=d3.select("#seaFoodPlot");
-        var lifeExpectancyPlot=d3.select("#lifeExpectancyPlot");
 
-        vegetablePlot.select("vegetablePlot").remove();
-        fruitPlot.select("fruitPlot").remove();
-        seaFoodPlot.select("seaFoodPlot").remove();
-        lifeExpectancyPlot.select("lifeExpectancyPlot").remove();
 
             // Add the X Axis
         vegetablePlot.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
-            .call(xAxis)
+            .attr("transform", "translate(25," + 190 + ")")
+            .call(vegxAxis)
             .selectAll("text")
             .attr("y", 0)
             .attr("x", 10)
@@ -102,34 +79,10 @@ class ScatterPlot{
             .attr("transform", "rotate(90)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
-
-
-////////////////////////////////////////////////////////////////////////////
-//              Needs correct datapoints                                  //
-////////////////////////////////////////////////////////////////////////////
-
-
-        console.log(vegConsumptionDataSet, "VegetableConsumptionDataset");
-        console.log(ObeseDataSet, "ObeseDataSet");
-        var g = vegetablePlot.append("g"); 
-    
-        g.selectAll("scatter-dots")
-            .data(ObeseDataSet)
-            .enter().append("circle")
-            .attr("cx", function(d,i) { return xAxisObeseScale(d[i]); })
-            .data(vegConsumptionDataSet)
-            .attr("cy", function(d,i) { return yVegyAxisScale(d[i]); })
-            .attr("r", 5);
-
-        // g.select("trendLine")
-        //     .data()
-
-////////////////////////////////////////////////////////////////////////////
-
         fruitPlot.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
-            .call(xAxis)
+            .attr("transform", "translate(25," + 190 + ")")
+            .call(FruitxAxis)
             .selectAll("text")
             .attr("y", 0)
             .attr("x", 10)
@@ -138,11 +91,10 @@ class ScatterPlot{
             .attr("transform", "rotate(90)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
-
         seaFoodPlot.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
-            .call(xAxis)
+            .attr("transform", "translate(25," + 190 + ")")
+            .call(SeafoodxAxis)
             .selectAll("text")
             .attr("y", 0)
             .attr("x", 10)
@@ -152,39 +104,66 @@ class ScatterPlot{
             .style("text-anchor", "start")
             .style("font-size", "10px");
 
-        lifeExpectancyPlot.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(12," + 162 + ")")
-            .call(xAxis)
-            .selectAll("text")
-            .attr("y", 0)
-            .attr("x", 10)
-            .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .attr("transform", "rotate(90)")
-            .style("text-anchor", "start")
-            .style("font-size", "10px");
+
+        // var g = vegetablePlot.append("g");
+        // var gf = fruitPlot.append("g");
+        // var gs = seaFoodPlot.append("g");
+    
+        vegetablePlot.selectAll("circle")
+            .data(ObeseVegDataSet)
+            .enter().append("circle")
+            .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", 4)
+            .attr("fill",IsComparisonOn?"red":"black");
+        fruitPlot.selectAll("circle")
+            .data(ObeseFruitDataSet)
+            .enter().append("circle")
+            .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", 4)
+        .attr("fill",IsComparisonOn?"red":"black");
+         seaFoodPlot.selectAll("circle")
+            .data(ObeseSeafoodDataSet)
+            .enter().append("circle")
+            .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", 4)
+        .attr("fill",IsComparisonOn?"red":"black");
+         if(IsComparisonOn==false){
+             vegetablePlot.selectAll("circle")
+            .data(ObeseVegDataSet)
+            .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", 4);
+        fruitPlot.selectAll("circle")
+            .data(ObeseFruitDataSet)
+            .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", 4);
+         seaFoodPlot.selectAll("circle")
+            .data(ObeseSeafoodDataSet)
+            .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", 4);
+         }
+
 
         // Add the Y Axis
         vegetablePlot.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 25 + ",-41)")
-            .call(vegyAxis);
+            .attr("transform", "translate(" + 25 + ",-12)")
+            .call(obeseYAxis);
 
         fruitPlot.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
-            .call(fruityAxis);
+            .attr("transform", "translate(" + 25 + ",-12)")
+            .call(obeseYAxis);
 
         seaFoodPlot.append("g")
             .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
-            .call(SeafoodyAxis);
-
-        lifeExpectancyPlot.append("g")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + 35 + ",-41)")
-            .call(LifeExpectancyAxis);
+            .attr("transform", "translate(" + 25 + ",-12)")
+            .call(obeseYAxis);
 
     }
 }
