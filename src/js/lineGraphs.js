@@ -56,7 +56,7 @@ class LineGraph{
             .range([0, 700]);
 
         let yAxisScale=d3.scaleLinear()
-            .domain([100, 0])
+            .domain([50, 0])
             .range([0, 200]);
         let vegyAxisScale=d3.scaleLinear()
             .domain([350, 0])
@@ -68,7 +68,7 @@ class LineGraph{
             .domain([50, 0])
             .range([0, 200]);
         let lifeExpectancyScale=d3.scaleLinear()
-            .domain([100, 0])
+            .domain([100, 50])
             .range([0, 200]);
         let xAxis = d3.axisBottom(xAxisScale);
         let yAxis = d3.axisLeft(yAxisScale);
@@ -87,7 +87,7 @@ class LineGraph{
 
         var line = d3.line()
         .x(function(d) { return xAxisScale(d.Year)+8; })
-        .y(function(d) { return yScale(d.Indicator)+12; })
+        .y(function(d) { return yAxisScale(d.Indicator)+12; })
         .curve(d3.curveMonotoneX);
 
         var Vegetableline = d3.line()
@@ -138,7 +138,7 @@ class LineGraph{
             .data(dataset).enter()
                  .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>yScale(d.Indicator)+12)
+            .attr("cy", d=>yAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -146,7 +146,7 @@ class LineGraph{
              lineGraph1.selectAll("circle")
             .data(dataset)
             .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>yScale(d.Indicator)+12)
+            .attr("cy", d=>yAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -226,7 +226,7 @@ class LineGraph{
             .data(lifeExpectancySet).enter()
                  .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>yScale(d.Indicator)+12)
+            .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
@@ -234,7 +234,7 @@ class LineGraph{
             lifeExpectancyGraph.selectAll("circle")
             .data(lifeExpectancySet)
             .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>yScale(d.Indicator)+12)
+            .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
             .attr("r", 2.5)
                  .attr("fill","black")
                  .attr("class",d=>d.Year);
