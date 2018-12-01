@@ -1,3 +1,16 @@
+countries={};
+d3.json("data/countries.json")
+    .then(function(countries) {
+        console.log(countries,"countries");
+        this.countries=countries;
+
+    });
+let worldMap= new Map();
+d3.json("data/world.json").then(function(world) {
+        console.log(world,"world");
+        worldMap.drawMap(world,this.countries);
+});
+    //------------------------------------------------------------------
 obeseList=[];
 vegConsumptionList=[];
 fruitConsumptionList=[];
@@ -7,23 +20,8 @@ seafoodConsumptionList=[];
 FemaleData={};
 MaleData={};
 
-// let worldMap= new Map();
-// d3.json("data/world.json")
-//     .then(function(world) {
-//         console.log(world,"world");
-//         worldMap.drawMap(world);
-//
-//     });
-countries={};
-d3.json("data/countries.json")
-    .then(function(countries) {
-        console.log(countries,"countries");
-        this.countries=countries;
 
-    });
 
-window.worldMap = new Map();
-let worldMap1 = new Map();
 /* DATA LOADING */
 //Load in json data to make map
 d3.csv("data/ObeseAdults.csv").then(obeseData => {
@@ -57,10 +55,10 @@ d3.csv("data/share_of_males.csv").then(shareOfMales => {
 d3.csv("data/population.csv").then(population => {
     populationList=FormatData(population);
 });
-d3.json("data/world.json")
-    .then(function(world) {
-        drawMap(world,this.countries);
-    });
+// d3.json("data/world.json")
+//     .then(function(world) {
+//         drawMap(world,this.countries);
+//     });
 
 
 
@@ -158,24 +156,7 @@ function drawMap(world,countries) {
 
 
 
-function Onclick() {
-    CountryCode = d3.select(".selected")._groups[0][0].id;
-    if (CountryCode != null) {
-        obeseData = obeseList.filter(m => m.Code == CountryCode);
-        vegetableData = vegConsumptionList.filter(m => m.Code == CountryCode);
-        fruitData = fruitConsumptionList.filter(m => m.Code == CountryCode);
-        seafoodData = seafoodConsumptionList.filter(m => m.Code == CountryCode);
-        lifeExpectancyData = lifeExpectancyList.filter(m => m.Code == CountryCode);
-        MalePercentage = shareOfMalesList.filter(m => m.Code == CountryCode);
-        FemalePercentage = shareOfFemalesList.filter(m => m.Code == CountryCode);
-        FemaleData = FemalePercentage[0];
-        MaleData = MalePercentage[0];
-        let obesityDistribution = new obesityDistributionGraph();
-        obesityDistribution.UpdateGraph(FemaleData, MaleData);
-        let linGraphs = new LineGraph();
-        linGraphs.updateLineGraphs(obeseData[0], vegetableData[0], fruitData[0], seafoodData[0], lifeExpectancyData[0])
-    }
-}
+
 
 
 

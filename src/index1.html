@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css"/>
+
+<script type="application/javascript" src="js/map.js"></script>
     <script type="application/javascript" src="js/script.js"></script>
+
+
 
 
     <link rel="stylesheet" href="styles.css"/>
@@ -23,14 +27,25 @@
         <h1>Obesity Trends</h1>
     </header>
 <h3>Visualization for Obesity trends depends on various attributes</h3>
+    </div>
 
 <div align="center" class="svg-container">
-    <svg width="1000" height="700" id="mapSvg" >
 
+    <svg width="1000" height="700" id="mapSvg" >
+        <title id="float-text">World Map</title>
         <g id="map" > </g>
     </svg>
 
 </div>
+    <div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group-comparision" align="left">
+ <label class="container">Compare Countries
+  <input type="checkbox" id="comparision" >
+  <span class="checkmark"></span>
+</label>
+    </div>
+
+
+
 <div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group" align="left">
     <button type="button" class="btn btn-default" id="zoom-in"><span class="fa fa-search-plus" aria-hidden="true"></span></button>
     <button type="button" class="btn btn-default" id="zoom-out"><span class="fa fa-search-minus" aria-hidden="true"></span></button>
