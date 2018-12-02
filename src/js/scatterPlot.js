@@ -17,9 +17,10 @@ class ScatterPlot{
             years=[1977,1987,1997,2007]
             }
         );
+
         obeseList=obeseList.Year.filter(m=>m.Year%10==7);
         obeseList.map(function(d){
-            var object={ObeseData:d.Indicator};
+            var object={ObeseData:d.Indicator,Year:d.Year};
             ObeseVegDataSet.push(object);
             ObeseFruitDataSet.push(object);
             ObeseSeafoodDataSet.push(object);
