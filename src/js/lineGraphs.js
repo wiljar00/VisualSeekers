@@ -128,13 +128,22 @@ class LineGraph{
         var lifeExpectancyGraph=d3.select("#lifeExpectancyChart");
 
         //append the line graph
-        if(!IsDualCountry) {
-            lineGraph1.select("#obesityCurve").remove();
-            vegLineGraph.select("#VegetavbleCurve").remove();
-            fruitLineGraph.select("#FruitCurve").remove();
-            seaFoodGraph.select("#seaFoodCurve").remove();
-            lifeExpectancyGraph.select("#LifeExpectancyCurve").remove();
+        if(IsDualCountry) {
+
         }
+        else{
+            d3.select("#obesitylineChart").selectAll("circle").remove();
+            d3.select("#vegetationLineChart").selectAll("circle").remove();
+            d3.select("#fruitlineChart").selectAll("circle").remove();
+            d3.select("#seaFoodChart").selectAll("circle").remove();
+            d3.select("#lifeExpectancyChart").selectAll("circle").remove();
+            d3.select("#obesitylineChart").selectAll("path").remove();
+            d3.select("#vegetationLineChart").selectAll("path").remove();
+            d3.select("#fruitlineChart").selectAll("path").remove();
+            d3.select("#seaFoodChart").selectAll("path").remove();
+            d3.select("#lifeExpectancyChart").selectAll("path").remove();
+        }
+
 
         function transition(path) {
             path.transition()
@@ -186,7 +195,7 @@ class LineGraph{
             .attr("transform", "translate(" + 45 + ",0)");
 
 
-        lineGraph1.selectAll("circle")
+        lineGraph1.append("g").selectAll("circle")
             .data(dataset).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
@@ -198,28 +207,22 @@ class LineGraph{
                 return "_" + year;
             });
 
-        lineGraph1.selectAll("circle").data(dataset).exit().remove();
+        // lineGraph1.selectAll("circle").data(dataset).exit().remove();
 
-
-
-        lineGraph1.selectAll("circle").data(dataset).exit().remove();
-
-        lineGraph1.selectAll("circle").data(dataset).exit().remove();
-
-        lineGraph1.selectAll("circle").data(dataset).exit().remove();
-
-        lineGraph1.selectAll("circle")
+        if(!IsDualCountry) {
+            lineGraph1.selectAll("circle")
             .data(dataset)
             .transition()
             .duration(750)
-            .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>yAxisScale(d.Indicator)+12)
+            .attr("cx", d => xAxisScale(d.Year) + 50)
+            .attr("cy", d => yAxisScale(d.Indicator) + 12)
             .attr("r", 4)
-            .attr("fill","black")
-            .attr("class", function(d){
-                let year = d.Year;
-                return "_" + year;
-            })
+            .attr("fill", "black")
+            .attr("class", function (d) {
+            let year = d.Year;
+            return "_" + year;
+            });
+        }
 
 
         //Vegetable Consumption Graph
@@ -231,7 +234,7 @@ class LineGraph{
             .attr("id","VegetavbleCurve")
             .attr("transform", "translate(" + 45 + ",0)");
 
-        vegLineGraph.selectAll("circle")
+        vegLineGraph.append("g").selectAll("circle")
             .data(vegetableDataset).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
@@ -243,20 +246,21 @@ class LineGraph{
                 return "_" + year;
             })
 
-        vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
-
-        vegLineGraph.selectAll("circle")
+        // vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
+        if(!IsDualCountry) {
+             vegLineGraph.selectAll("circle")
             .data(vegetableDataset)
-            .transition()
-            .duration(750)
-            .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
-            .attr("r", 4)
-            .attr("fill","black")
-            .attr("class", function(d){
-                let year = d.Year;
-                return "_" + year;
-            })
+        .transition()
+        .duration(750)
+        .attr("cx", d => xAxisScale(d.Year) + 50)
+        .attr("cy", d => vegyAxisScale(d.Indicator) + 12)
+        .attr("r", 4)
+        .attr("fill", "black")
+        .attr("class", function (d) {
+            let year = d.Year;
+            return "_" + year;
+        });
+}
 
 
         //Fruit Consumption Graph
@@ -268,7 +272,7 @@ class LineGraph{
             .attr("id","FruitCurve")
             .attr("transform", "translate(" + 45 + ",0)");
 
-        fruitLineGraph.selectAll("circle")
+        fruitLineGraph.append("g").selectAll("circle")
             .data(fruitDataSet).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
@@ -280,20 +284,21 @@ class LineGraph{
                 return "_" + year;
             })
 
-        fruitLineGraph.selectAll("circle").data(fruitDataSet).exit().remove();
-
-        fruitLineGraph.selectAll("circle")
-            .data(fruitDataSet)
-            .transition()
-            .duration(750)
-            .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
-            .attr("r", 4)
-            .attr("fill","black")
-            .attr("class", function(d){
-                let year = d.Year;
-                return "_" + year;
-            })
+        // fruitLineGraph.selectAll("circle").data(fruitDataSet).exit().remove();
+        if(!IsDualCountry) {
+            fruitLineGraph.selectAll("circle")
+                .data(fruitDataSet)
+                .transition()
+                .duration(750)
+                .attr("cx", d => xAxisScale(d.Year) + 50)
+                .attr("cy", d => fruitAxisScale(d.Indicator) + 12)
+                .attr("r", 4)
+                .attr("fill", "black")
+                .attr("class", function (d) {
+                    let year = d.Year;
+                    return "_" + year;
+                });
+        }
 
 
         //Seafood Consumption Graph
@@ -305,7 +310,7 @@ class LineGraph{
             .attr("id","seaFoodCurve")
             .attr("transform", "translate(" + 45 + ",0)");
 
-        seaFoodGraph.selectAll("circle")
+        seaFoodGraph.append("g").selectAll("circle")
             .data(seaFoodDataSet).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
@@ -317,20 +322,22 @@ class LineGraph{
                 return "_" + year;
             })
 
-        seaFoodGraph.selectAll("circle").data(seaFoodDataSet).exit().remove();
+        // seaFoodGraph.selectAll("circle").data(seaFoodDataSet).exit().remove();
 
-        seaFoodGraph.selectAll("circle")
-            .data(seaFoodDataSet)
-            .transition()
-            .duration(750)
-            .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
-            .attr("r", 4)
-            .attr("fill","black")
-            .attr("class", function(d){
-                let year = d.Year;
-                return "_" + year;
-            })
+        if(!IsDualCountry) {
+            seaFoodGraph.selectAll("circle")
+                .data(seaFoodDataSet)
+                .transition()
+                .duration(750)
+                .attr("cx", d => xAxisScale(d.Year) + 50)
+                .attr("cy", d => seaFoodAxisScale(d.Indicator) + 12)
+                .attr("r", 4)
+                .attr("fill", "black")
+                .attr("class", function (d) {
+                    let year = d.Year;
+                    return "_" + year;
+                });
+        }
 
 
         //Life Expectancy Graph
@@ -342,7 +349,7 @@ class LineGraph{
             .attr("id","LifeExpectancyCurve")
             .attr("transform", "translate(" + 45 + ",0)");
 
-        lifeExpectancyGraph.selectAll("circle")
+        lifeExpectancyGraph.append("g").selectAll("circle")
             .data(lifeExpectancySet).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
@@ -354,20 +361,22 @@ class LineGraph{
                 return "_" + year;
             });
 
-        lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove();
+        // lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove();
 
-        lifeExpectancyGraph.selectAll("circle")
-            .data(lifeExpectancySet)
-            .transition()
-            .duration(750)
-            .attr("cx", d=>xAxisScale(d.Year)+50)
-            .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
-            .attr("r", 4)
-            .attr("fill","black")
-            .attr("class", function(d){
-                let year = d.Year;
-                return "_" + year;
-            })
+        if(!IsDualCountry) {
+            lifeExpectancyGraph.selectAll("circle")
+                .data(lifeExpectancySet)
+                .transition()
+                .duration(750)
+                .attr("cx", d => xAxisScale(d.Year) + 50)
+                .attr("cy", d => lifeExpectancyScale(d.Indicator) + 12)
+                .attr("r", 4)
+                .attr("fill", "black")
+                .attr("class", function (d) {
+                    let year = d.Year;
+                    return "_" + year;
+                });
+        }
 
 
         // Add the X Axis
