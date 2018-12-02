@@ -200,6 +200,12 @@ class LineGraph{
 
         lineGraph1.selectAll("circle").data(dataset).exit().remove();
 
+
+
+        lineGraph1.selectAll("circle").data(dataset).exit().remove();
+
+        lineGraph1.selectAll("circle").data(dataset).exit().remove();
+
         lineGraph1.selectAll("circle").data(dataset).exit().remove();
 
         lineGraph1.selectAll("circle")
@@ -346,9 +352,9 @@ class LineGraph{
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
-            })
+            });
 
-        lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove()
+        lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove();
 
         lifeExpectancyGraph.selectAll("circle")
             .data(lifeExpectancySet)

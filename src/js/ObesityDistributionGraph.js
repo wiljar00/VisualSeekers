@@ -10,7 +10,7 @@ class obesityDistributionGraph{
             .style("background", "#FFFFFF")
             .attr('id', 'tooltip');
     };
-    UpdateGraph(FemaleData,MaleData){
+    UpdateGraph(FemaleData,MaleData,IsdualCountry){
         var self=this;
         console.log(FemaleData,MaleData,"UpdateGraph");
         let years=[];
@@ -28,7 +28,18 @@ class obesityDistributionGraph{
             .range([0, 1500]);
         let yAxis = d3.axisLeft(yAxisScale);
         yAxis.scale(yAxisScale);
-        let yAxiselement=d3.select("#yAxis");
+        var  obesityChart;
+         let yAxiselement;
+         if(IsdualCountry==true){
+              obesityChart=d3.select("#obesityDistributionChart2");
+              obesityChart.append("g").attr("id","yAxis2").attr("class","xAxis")
+              yAxiselement=d3.select("#yAxis2");
+         }
+         else{
+             d3.select("#obesityDistributionChart2").selectAll("*").remove()
+              yAxiselement=d3.select("#yAxis");
+               obesityChart=d3.select("#obesityDistributionChart");
+         }
         yAxiselement.attr("transform","translate(70, 200) scale(-1,1)")
             .call(yAxis)
             .selectAll("text")
@@ -57,7 +68,7 @@ class obesityDistributionGraph{
         }
 
         console.log(obesityData,'obesityData');
-        var obesityChart=d3.select("#obesityDistributionChart");
+        // var obesityChart=d3.select("#obesityDistributionChart");
        var div = d3.select("body").append("div")
        .attr("class", "noDataTooltip")
        .style("opacity", 0);
@@ -91,7 +102,7 @@ class obesityDistributionGraph{
         }
 
         console.log(obesityData,'obesityData');
-      var obesityChart=d3.select("#obesityDistributionChart");
+      // var obesityChart=d3.select("#obesityDistributionChart");
         obesityChart.selectAll("rect")
             .data(obesityData)
             .enter()

@@ -121,11 +121,13 @@ class Map {
             {
                 d3.select(this).attr("class", "secondSelected");
                 document.getElementById("comparision").checked = false;
+                document.getElementById("comparision").disabled = true;
                  CountryCode = d3.select(".secondSelected")._groups[0][0].id;
                  dualCountry=true
             }
             else
             {
+                document.getElementById("comparision").disabled = false;
             self.clearMap();
             selectedCountries=[];
             d3.select(this).attr("class", "selected");
@@ -150,7 +152,7 @@ class Map {
                 if(FemaleData != null && MaleData != null){
 
                     let obesityDistribution = new obesityDistributionGraph();
-                    obesityDistribution.UpdateGraph(FemaleData, MaleData);
+                    obesityDistribution.UpdateGraph(FemaleData, MaleData,dualCountry);
 
                     let lineGraph = new LineGraph();
                     lineGraph.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
