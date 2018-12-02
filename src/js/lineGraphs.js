@@ -153,15 +153,19 @@ class LineGraph{
                 .on('mouseover', function() {
                 var circleclass = d3.select(this).attr('class');
                 d3.selectAll("." + circleclass)
+                    .transition()
+                    .delay(25)
                     .attr("fill", "red")
                     .attr("r", 10);
                 })
                 .on('mouseout', function(){
                     var circleclass = d3.select(this).attr('class');
                     d3.selectAll("." + circleclass)
+                        .transition()
+                        .delay(150)
                         .attr('fill', "black")
-                        .attr('r', 2.5);
-                })
+                        .attr('r', 4);
+            })
                 // .on('click', function() {
                 //     var circleclass = d3.select(this).attr('class');
                 //     console.log(circleclass);
@@ -187,7 +191,7 @@ class LineGraph{
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -202,7 +206,7 @@ class LineGraph{
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -224,7 +228,7 @@ class LineGraph{
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -239,7 +243,7 @@ class LineGraph{
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -261,7 +265,7 @@ class LineGraph{
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -276,7 +280,7 @@ class LineGraph{
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -298,7 +302,7 @@ class LineGraph{
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -313,7 +317,7 @@ class LineGraph{
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -335,7 +339,7 @@ class LineGraph{
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -350,7 +354,7 @@ class LineGraph{
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;

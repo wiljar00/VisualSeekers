@@ -40,6 +40,42 @@ class ScatterPlot{
          ObeseSeafoodDataSet[i].SeaFoodData=d.Indicator
            }
         );
+        var div = d3.select("body").append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);
+
+
+        //Hover Selection
+        function handleScatterHover(){
+            d3.selectAll('circle')
+                .on('mouseover', function() {
+                var circleclass = d3.select(this).attr('class');
+                    div.transition()		
+                    .duration(200)		
+                    .style("opacity", .9);		
+                    div.html("Year: " + circleclass )	
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px");	
+
+                d3.selectAll("." + circleclass)
+                    .transition()
+                    .delay(25)
+                    // .attr("fill", "red")
+                    .attr("r", 10);
+                })
+                .on('mouseout', function(){
+                    var circleclass = d3.select(this).attr('class');
+                    d3.selectAll("." + circleclass)
+                        .transition()
+                        .delay(150)
+                        // .attr('fill', IsComparisonOn?"red":"black")
+                        .attr('r', 4)	
+                        div.transition()		
+                        .duration(500)		
+                        .style("opacity", 0);		
+                })
+        }
+
 
         let yAxisObeseScale=d3.scaleLinear()
             .domain([50,0])
@@ -53,6 +89,7 @@ class ScatterPlot{
         let xSeaFoodAxisScale=d3.scaleLinear()
             .domain([0,50])
             .range([0, 200]);
+
         let obeseYAxis = d3.axisLeft(yAxisObeseScale);
         let vegxAxis = d3.axisBottom(xVegyAxisScale);
         let FruitxAxis = d3.axisBottom(xFruitAxisScale);
@@ -126,21 +163,36 @@ else
             .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
-            .attr("fill",IsComparisonOn?"red":"black");
+            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
+
         fruitPlot.selectAll("circle")
             .data(ObeseFruitDataSet)
             .enter().append("circle")
             .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
-        .attr("fill",IsComparisonOn?"red":"black");
+            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
+
          seaFoodPlot.selectAll("circle")
             .data(ObeseSeafoodDataSet)
             .enter().append("circle")
             .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
-        .attr("fill",IsComparisonOn?"red":"black");
+            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
+
          if(IsComparisonOn==false){
              vegetablePlot.selectAll("circle")
             .data(ObeseVegDataSet)
@@ -176,5 +228,6 @@ else
             .attr("transform", "translate(" + 25 + ",-12)")
             .call(obeseYAxis);
 
+        handleScatterHover();
     }
 }
