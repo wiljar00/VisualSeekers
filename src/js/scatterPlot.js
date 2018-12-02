@@ -104,11 +104,21 @@ class ScatterPlot{
             .style("text-anchor", "start")
             .style("font-size", "10px");
 
+if(IsComparisonOn==true) {
+    var vegetablePlot = vegetablePlot.append("g")
+        .attr("id","VegPlotForSecondCountry");
+    var fruitPlot = fruitPlot.append("g")
+    .attr("id","FruitPlotForSecondCountry");
+    var seaFoodPlot = seaFoodPlot.append("g")
+    .attr("id","SeaFoodPlotForSecondCountry");
+}
+else
+{
+    d3.select("#VegPlotForSecondCountry").remove();
+    d3.select("#FruitPlotForSecondCountry").remove();
+    d3.select("#SeaFoodPlotForSecondCountry").remove();
+}
 
-        // var g = vegetablePlot.append("g");
-        // var gf = fruitPlot.append("g");
-        // var gs = seaFoodPlot.append("g");
-    
         vegetablePlot.selectAll("circle")
             .data(ObeseVegDataSet)
             .enter().append("circle")

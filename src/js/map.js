@@ -113,19 +113,25 @@ class Map {
         }
 
         function onclick() {
+            let CountryCode ;
+            let dualCountry;
             self.checkBoxValue=document.getElementById("comparision").checked;
             if(self.checkBoxValue)
             {
                 d3.select(this).attr("class", "secondSelected");
-
+                document.getElementById("comparision").checked = false;
+                 CountryCode = d3.select(".secondSelected")._groups[0][0].id;
+                 dualCountry=true
             }
             else
             {
             self.clearMap();
+            selectedCountries=[];
             d3.select(this).attr("class", "selected");
-
+                 CountryCode = d3.select(".selected")._groups[0][0].id;
+                 dualCountry=false
             }
-            let CountryCode = d3.select(".selected")._groups[0][0].id;
+
             self.checkBoxValue=document.getElementById("comparision").checked;
 
             selectedCountries.push(CountryCode);
@@ -143,17 +149,11 @@ class Map {
                 let obesityDistribution = new obesityDistributionGraph();
                 obesityDistribution.UpdateGraph(FemaleData, MaleData);
                 let linGraphs = new LineGraph();
-                linGraphs.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0])
+                linGraphs.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
+                let scatterPlot= new ScatterPlot();
+                scatterPlot.updateScatterPlot(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0],dualCountry);
             }
         }
-
-
-        // Hint: assign an id to each country path to make it easier to select afterwards
-        // we suggest you use the variable in the data element's .id field to set the id
-
-        // Make sure and give your paths the appropriate class (see the .css selectors at
-        // the top of the provided html file)
-
     }
 
 

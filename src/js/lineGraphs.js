@@ -3,7 +3,7 @@ class LineGraph{
 
     }
 
-    updateLineGraphs(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList){
+    updateLineGraphs(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList,IsDualCountry){
 
         var self=this;
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
@@ -128,11 +128,13 @@ class LineGraph{
         var lifeExpectancyGraph=d3.select("#lifeExpectancyChart");
 
         //append the line graph
-        lineGraph1.select("#obesityCurve").remove();
-        vegLineGraph.select("#VegetavbleCurve").remove();
-        fruitLineGraph.select("#FruitCurve").remove();
-        seaFoodGraph.select("#seaFoodCurve").remove();
-        lifeExpectancyGraph.select("#LifeExpectancyCurve").remove();
+        if(!IsDualCountry) {
+            lineGraph1.select("#obesityCurve").remove();
+            vegLineGraph.select("#VegetavbleCurve").remove();
+            fruitLineGraph.select("#FruitCurve").remove();
+            seaFoodGraph.select("#seaFoodCurve").remove();
+            lifeExpectancyGraph.select("#LifeExpectancyCurve").remove();
+        }
 
         function transition(path) {
             path.transition()
@@ -165,7 +167,7 @@ class LineGraph{
             .attr("fill","black")
             .attr("class",d=>d.Year);
         
-        lineGraph1.selectAll("circle").data(dataset).exit().remove()
+        lineGraph1.selectAll("circle").data(dataset).exit().remove();
         
         lineGraph1.selectAll("circle")
             .data(dataset)
