@@ -147,7 +147,7 @@ class Map {
                 let FemaleData = self.FemalePercentage[0];
                 let MaleData = self.MalePercentage[0];
                 let obesityDistribution = new obesityDistributionGraph();
-                obesityDistribution.UpdateGraph(FemaleData, MaleData);
+                obesityDistribution.UpdateGraph(FemaleData, MaleData,dualCountry);
                 let linGraphs = new LineGraph();
                 linGraphs.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
                 let scatterPlot= new ScatterPlot();
