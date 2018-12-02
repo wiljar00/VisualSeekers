@@ -585,7 +585,7 @@ div.tooltip {
 div.noDataTooltip{
     position: absolute;			
     text-align: center;			
-    width: 60px;					
+    width: 65px;					
     height: 60;					
     padding: 2px;				
     font: 12px sans-serif;		
