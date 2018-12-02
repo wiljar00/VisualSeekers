@@ -58,6 +58,40 @@ class obesityDistributionGraph{
 
         console.log(obesityData,'obesityData');
         var obesityChart=d3.select("#obesityDistributionChart");
+       var div = d3.select("body").append("div")
+       .attr("class", "noDataTooltip")
+       .style("opacity", 0);
+
+
+        //Hover Selection
+        function handleHover(d){
+            d3.selectAll('rect')
+                .on('mouseover', function() {
+                var percentage = d3.select(this).attr('width');
+                var gender = d3.select(this).attr('class');
+                    div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                    div.html("Gender: " + gender + "<br/>" + "Percentage: " + percentage )
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on('mouseout', function(){
+                    var percentage = d3.select(this).attr('width');
+                    var gender = d3.select(this).attr('class');
+                    d3.selectAll("." + gender)
+                        .transition()
+                        .delay(150)
+                        // .attr('fill', IsComparisonOn?"red":"black")
+                        // .attr('r', 4)
+                        div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+        }
+
+        console.log(obesityData,'obesityData');
+      var obesityChart=d3.select("#obesityDistributionChart");
         obesityChart.selectAll("rect")
             .data(obesityData)
             .enter()
@@ -67,7 +101,7 @@ class obesityDistributionGraph{
             .attr("height",25)
             .attr("width",m=>xAxisScale(m.Indicator))
             .attr("class",d=>d.Gender=='F'?"female":"male")
-            .on("mouseover",d=>self.GetTooltipData(d));
+
         obesityChart.selectAll("rect")
             .data(obesityData)
             .attr("x",d=>d.x)
@@ -75,11 +109,13 @@ class obesityDistributionGraph{
             .attr("height",25)
             .attr("width",m=>xAxisScale(m.Indicator))
             .attr("class",d=>d.Gender=='F'?"female":"male")
-            .on("mouseover",d=>self.GetTooltipData(d));
+
         obesityChart.selectAll("rect")
             .data(obesityData)
             .exit()
             .remove()
+
+        handleHover(obesityData);
     }
 
     GetTooltipData(d){

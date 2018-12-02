@@ -20,6 +20,7 @@ class Map {
 
     }
 
+    
     /**
      * Function that clears the map
      */
@@ -46,8 +47,6 @@ class Map {
     updateMap() {
         this.checkBoxValue=document.getElementById("comparision").checked;
 
-
-
     }
     /**
      * Renders the actual map
@@ -59,6 +58,9 @@ class Map {
         self=this;
         let selectedCountries = [];
 
+        let div = d3.select("body").append("div")	
+        .attr("class", "noDataTooltip")				
+        .style("opacity", 0);
 
         var geojson = topojson.feature(world, world.objects.countries);
         var mapsvg=d3.select("#map");
@@ -87,6 +89,7 @@ class Map {
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut);
 
+
         function handleMouseOver(d, i) {  // Add interactivity
 
             let countryName=null;
@@ -102,7 +105,6 @@ class Map {
             mapSvg.append("title")
                 .attr('id',"titleid")
                 .text(countryName);
-
         }
 
 
@@ -146,15 +148,31 @@ class Map {
                 self.FemalePercentage = shareOfFemalesList.filter(m => m.Code == CountryCode);
                 let FemaleData = self.FemalePercentage[0];
                 let MaleData = self.MalePercentage[0];
-                let obesityDistribution = new obesityDistributionGraph();
-                obesityDistribution.UpdateGraph(FemaleData, MaleData);
-                let linGraphs = new LineGraph();
-                linGraphs.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
-                let scatterPlot= new ScatterPlot();
-                scatterPlot.updateScatterPlot(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0],dualCountry);
+                if(FemaleData != null && MaleData != null){
+
+                    let obesityDistribution = new obesityDistributionGraph();
+                    obesityDistribution.UpdateGraph(FemaleData, MaleData);
+
+                    let lineGraph = new LineGraph();
+                    lineGraph.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
+
+                    let scatterPlot= new ScatterPlot();
+                    scatterPlot.updateScatterPlot(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0],dualCountry);
+
+                }
+                else{
+
+                    //Show error message
+                    div.transition()		
+                        .duration(200)		
+                        .style("opacity", .9)
+
+                    div.html("No Data Available For This Country" )	
+                        .style("left", (d3.event.pageX) +"px")		
+                        .style("top", (d3.event.pageY) + "px")
+
+                }
             }
         }
     }
-
-
 }
