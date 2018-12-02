@@ -147,6 +147,30 @@ class LineGraph{
             return function (t) { return i(t); };
         }
 
+        //Hover Selection
+        function handleHover(){
+            d3.selectAll('circle')
+                .on('mouseover', function() {
+                var circleclass = d3.select(this).attr('class');
+                d3.selectAll("." + circleclass)
+                    .attr("fill", "red")
+                    .attr("r", 10);
+                })
+                .on('mouseout', function(){
+                    var circleclass = d3.select(this).attr('class');
+                    d3.selectAll("." + circleclass)
+                        .attr('fill', "black")
+                        .attr('r', 2.5);
+                })
+                // .on('click', function() {
+                //     var circleclass = d3.select(this).attr('class');
+                //     console.log(circleclass);
+                //     d3.selectAll("." + circleclass)
+                //         .attr("fill", "red")
+                //         .attr("r", 10);
+                //     })
+        }
+
 
         //Obesity Graph
         lineGraph1.append("path")
@@ -165,9 +189,12 @@ class LineGraph{
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
-        
-        lineGraph1.selectAll("circle").data(dataset).exit().remove();
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
+
+        lineGraph1.selectAll("circle").data(dataset).exit().remove()
         
         lineGraph1.selectAll("circle")
             .data(dataset)
@@ -177,8 +204,11 @@ class LineGraph{
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
-        
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
+
 
         //Vegetable Consumption Graph
         vegLineGraph.append("path")
@@ -196,7 +226,10 @@ class LineGraph{
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
         vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
         
@@ -208,7 +241,10 @@ class LineGraph{
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
 
         //Fruit Consumption Graph
@@ -227,7 +263,10 @@ class LineGraph{
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
         fruitLineGraph.selectAll("circle").data(fruitDataSet).exit().remove();
         
@@ -239,7 +278,10 @@ class LineGraph{
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
 
         //Seafood Consumption Graph
@@ -258,7 +300,10 @@ class LineGraph{
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
         seaFoodGraph.selectAll("circle").data(seaFoodDataSet).exit().remove();
         
@@ -270,7 +315,10 @@ class LineGraph{
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
 
         //Life Expectancy Graph
@@ -289,7 +337,10 @@ class LineGraph{
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
         lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove()
         
@@ -301,7 +352,10 @@ class LineGraph{
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
             .attr("r", 2.5)
             .attr("fill","black")
-            .attr("class",d=>d.Year);
+            .attr("class", function(d){
+                let year = d.Year;
+                return "_" + year;
+            })
         
         
         // Add the X Axis
@@ -399,7 +453,13 @@ class LineGraph{
         lifeExpectancyGraph.append("g")
             .attr("class", "y axis")
             .attr("transform", "translate(" + 50 + ",10)")
-            .call(LifeExpectancyAxis);
+            .call(LifeExpectancyAxis);     
+            
+
+        //Call hover function
+        handleHover();
     }
+
+    
 
 }
