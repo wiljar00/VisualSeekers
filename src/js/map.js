@@ -146,15 +146,23 @@ class Map {
                 self.FemalePercentage = shareOfFemalesList.filter(m => m.Code == CountryCode);
                 let FemaleData = self.FemalePercentage[0];
                 let MaleData = self.MalePercentage[0];
-                let obesityDistribution = new obesityDistributionGraph();
-                obesityDistribution.UpdateGraph(FemaleData, MaleData);
-                let linGraphs = new LineGraph();
-                linGraphs.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
-                let scatterPlot= new ScatterPlot();
-                scatterPlot.updateScatterPlot(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0],dualCountry);
+                if(FemaleData != null && MaleData != null){
+
+                    //Show error message
+
+                    let obesityDistribution = new obesityDistributionGraph();
+                    obesityDistribution.UpdateGraph(FemaleData, MaleData);
+
+                    let lineGraph = new LineGraph();
+                    lineGraph.updateLineGraphs(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0], self.lifeExpectancyData[0],dualCountry);
+
+                    let scatterPlot= new ScatterPlot();
+                    scatterPlot.updateScatterPlot(self.obeseData[0], self.vegetableData[0], self.fruitData[0], self.seafoodData[0],dualCountry);
+                }
+                else{
+                    console.log("error Message, no data for this country")
+                }
             }
         }
     }
-
-
 }
