@@ -7,8 +7,8 @@ class LineGraph{
 
         var self=this;
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
-        width = 400 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+            width = 400 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
 
         let years=[];
         let ObeseDataSet=[];
@@ -17,34 +17,34 @@ class LineGraph{
         let seafoodConsumptionDataSet=[];
         let lifeExpectancyDataSet=[];
         obeseList.Year.map(function(d){
-         years.push(d.Year)
-           }
+                years.push(d.Year)
+            }
         );
         obeseList.Year.map(function(d){
-         ObeseDataSet.push(d.Indicator)
-           }
+                ObeseDataSet.push(d.Indicator)
+            }
         );
         console.log(ObeseDataSet,'ObeseDataSet');
         vegetableData.Year.map(function(d){
-         vegConsumptionDataSet.push(d.Indicator)
-           }
+                vegConsumptionDataSet.push(d.Indicator)
+            }
         );
         console.log(vegConsumptionDataSet,'vegConsumptionDataSet');
         fruitConsumptionList.Year.map(function(d){
-         fruitConsumptionDataSet.push(d.Indicator)
-           }
+                fruitConsumptionDataSet.push(d.Indicator)
+            }
         );
         console.log(fruitConsumptionDataSet,'fruitConsumptionDataSet');
         console.log(seafoodConsumptionList,'seafoodConsumptionDataSet');
         seafoodConsumptionList.Year.map(function(d){
-         seafoodConsumptionDataSet.push(d.Indicator)
-           }
+                seafoodConsumptionDataSet.push(d.Indicator)
+            }
         );
         console.log(seafoodConsumptionDataSet,'seafoodConsumptionDataSet');
 
         lifeExpectancyList.Year.map(function(d){
-         lifeExpectancyDataSet.push(d.Indicator)
-           }
+                lifeExpectancyDataSet.push(d.Indicator)
+            }
         );
         console.log(lifeExpectancyDataSet,'lifeExpectancyDataSet');
 
@@ -153,15 +153,19 @@ class LineGraph{
                 .on('mouseover', function() {
                 var circleclass = d3.select(this).attr('class');
                 d3.selectAll("." + circleclass)
+                    .transition()
+                    .delay(25)
                     .attr("fill", "red")
                     .attr("r", 10);
                 })
                 .on('mouseout', function(){
                     var circleclass = d3.select(this).attr('class');
                     d3.selectAll("." + circleclass)
+                        .transition()
+                        .delay(150)
                         .attr('fill', "black")
-                        .attr('r', 2.5);
-                })
+                        .attr('r', 4);
+            })
                 // .on('click', function() {
                 //     var circleclass = d3.select(this).attr('class');
                 //     console.log(circleclass);
@@ -181,28 +185,30 @@ class LineGraph{
             .attr("id","obesityCurve")
             .attr("transform", "translate(" + 45 + ",0)");
 
-        
+
         lineGraph1.selectAll("circle")
             .data(dataset).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
-            })
+            });
 
-        lineGraph1.selectAll("circle").data(dataset).exit().remove()
-        
+        lineGraph1.selectAll("circle").data(dataset).exit().remove();
+
+        lineGraph1.selectAll("circle").data(dataset).exit().remove();
+
         lineGraph1.selectAll("circle")
             .data(dataset)
             .transition()
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
@@ -218,34 +224,34 @@ class LineGraph{
             .call(transition)
             .attr("id","VegetavbleCurve")
             .attr("transform", "translate(" + 45 + ",0)");
-        
+
         vegLineGraph.selectAll("circle")
             .data(vegetableDataset).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
         vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
-        
+
         vegLineGraph.selectAll("circle")
             .data(vegetableDataset)
             .transition()
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
 
         //Fruit Consumption Graph
         fruitLineGraph.append("path")
@@ -255,34 +261,34 @@ class LineGraph{
             .call(transition)
             .attr("id","FruitCurve")
             .attr("transform", "translate(" + 45 + ",0)");
-        
+
         fruitLineGraph.selectAll("circle")
             .data(fruitDataSet).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
         fruitLineGraph.selectAll("circle").data(fruitDataSet).exit().remove();
-        
+
         fruitLineGraph.selectAll("circle")
             .data(fruitDataSet)
             .transition()
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
 
         //Seafood Consumption Graph
         seaFoodGraph.append("path")
@@ -292,34 +298,34 @@ class LineGraph{
             .call(transition)
             .attr("id","seaFoodCurve")
             .attr("transform", "translate(" + 45 + ",0)");
-        
+
         seaFoodGraph.selectAll("circle")
             .data(seaFoodDataSet).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
         seaFoodGraph.selectAll("circle").data(seaFoodDataSet).exit().remove();
-        
+
         seaFoodGraph.selectAll("circle")
             .data(seaFoodDataSet)
             .transition()
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
 
         //Life Expectancy Graph
         lifeExpectancyGraph.append("path")
@@ -329,38 +335,38 @@ class LineGraph{
             .call(transition)
             .attr("id","LifeExpectancyCurve")
             .attr("transform", "translate(" + 45 + ",0)");
-        
+
         lifeExpectancyGraph.selectAll("circle")
             .data(lifeExpectancySet).enter()
             .append("circle")
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
+
         lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove()
-        
+
         lifeExpectancyGraph.selectAll("circle")
             .data(lifeExpectancySet)
             .transition()
             .duration(750)
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
-            .attr("r", 2.5)
+            .attr("r", 4)
             .attr("fill","black")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
-        
-        
+
+
         // Add the X Axis
         lineGraph1.append("g")
-            .attr("class", "x axis")
+            .attr("class", "xAxis")
             .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
@@ -368,26 +374,44 @@ class LineGraph{
             .attr("y", 0)
             .attr("x", 10)
             .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .attr("transform", "rotate(90)")
+            .attr("dx", "-5em")
+            .attr("transform", "rotate(270)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
 
+        lineGraph1
+            .append("rect")
+            .attr("width","790")
+            .attr("height","290")
+            .attr("x","5")
+            .attr("y","-10")
+            .attr("class","border");
+
+
         vegLineGraph.append("g")
-            .attr("class", "x axis")
+            .attr("class", "xAxis")
             .attr("transform", "translate(40," + 210 + ")")// change here for x axis
             .call(xAxis)
             .selectAll("text")
             .attr("y", 0)
             .attr("x", 10)
             .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .attr("transform", "rotate(90)")
+            .attr("dx", "-5em")
+            .attr("transform", "rotate(270)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
+
+        vegLineGraph
+            .append("rect")
+            .attr("width","790")
+            .attr("height","290")
+            .attr("x","5")
+            .attr("y","-10")
+            .attr("class","border");
+
 
         fruitLineGraph.append("g")
-            .attr("class", "x axis")
+            .attr("class", "xAxis")
             .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
@@ -395,13 +419,22 @@ class LineGraph{
             .attr("y", 0)
             .attr("x", 10)
             .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .attr("transform", "rotate(90)")
+            .attr("dx", "-5em")
+            .attr("transform", "rotate(270)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
+
+        fruitLineGraph
+            .append("rect")
+            .attr("width","790")
+            .attr("height","290")
+            .attr("x","5")
+            .attr("y","-10")
+            .attr("class","border");
+
 
         seaFoodGraph.append("g")
-            .attr("class", "x axis")
+            .attr("class", "xAxis")
             .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
@@ -409,13 +442,21 @@ class LineGraph{
             .attr("y", 0)
             .attr("x", 10)
             .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .attr("transform", "rotate(90)")
+            .attr("dx", "-5em")
+            .attr("transform", "rotate(270)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
 
+        seaFoodGraph
+            .append("rect")
+            .attr("width","790")
+            .attr("height","290")
+            .attr("x","5")
+            .attr("y","-10")
+            .attr("class","border");
+
         lifeExpectancyGraph.append("g")
-            .attr("class", "x axis")
+            .attr("class", "xAxis")
             .attr("transform", "translate(40," + 210 + ")")
             // .attr("transform", "rotate(90)")
             .call(xAxis)
@@ -423,43 +464,51 @@ class LineGraph{
             .attr("y", 0)
             .attr("x", 10)
             .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .attr("transform", "rotate(90)")
+            .attr("dx", "-5em")
+            .attr("transform", "rotate(270)")
             .style("text-anchor", "start")
             .style("font-size", "10px");
+
+        lifeExpectancyGraph
+            .append("rect")
+            .attr("width","790")
+            .attr("height","290")
+            .attr("x","5")
+            .attr("y","-10")
+            .attr("class","border");
 
 
         // Add the Y Axis
         lineGraph1.append("g")
-            .attr("class", "y axis")
+            .attr("class", "yAxis")
             .attr("transform", "translate(" + 50 + ",10)")
             .call(yAxis);
 
         vegLineGraph.append("g")
-            .attr("class", "y axis")
+            .attr("class", "yAxis")
             .attr("transform", "translate(" + 50 + ",10)")// y axis
             .call(vegyAxis);
 
         fruitLineGraph.append("g")
-            .attr("class", "y axis")
+            .attr("class", "yAxis")
             .attr("transform", "translate(" + 50 + ",10)")
             .call(fruityAxis);
 
         seaFoodGraph.append("g")
-            .attr("class", "y axis")
+            .attr("class", "yAxis")
             .attr("transform", "translate(" + 50 + ",10)")
             .call(SeafoodyAxis);
 
         lifeExpectancyGraph.append("g")
-            .attr("class", "y axis")
+            .attr("class", "yAxis")
             .attr("transform", "translate(" + 50 + ",10)")
-            .call(LifeExpectancyAxis);     
-            
+            .call(LifeExpectancyAxis);
+
 
         //Call hover function
         handleHover();
     }
 
-    
+
 
 }

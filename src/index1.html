@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css"/>
 
-<script type="application/javascript" src="js/map.js"></script>
+    <script type="application/javascript" src="js/map.js"></script>
     <script type="application/javascript" src="js/script.js"></script>
 
 
@@ -26,23 +26,23 @@
     <header>
         <h1>Obesity Trends</h1>
     </header>
-<h3>Visualization for Obesity trends depends on various attributes</h3>
-    </div>
+    <h3>Visualization for Obesity trends depends on various attributes</h3>
+</div>
 
 <div align="center" class="svg-container">
 
-    <svg width="1000" height="700" id="mapSvg" >
+    <svg width="1000" height="600" id="mapSvg" >
         <title id="float-text">World Map</title>
         <g id="map" > </g>
     </svg>
 
 </div>
-    <div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group-comparision" align="left">
- <label class="container">Compare Countries
-  <input type="checkbox" id="comparision" >
-  <span class="checkmark"></span>
-</label>
-    </div>
+<div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group-comparision" align="left">
+    <label class="container">Compare Countries
+        <input type="checkbox" id="comparision" >
+        <span class="checkmark"></span>
+    </label>
+</div>
 
 
 
@@ -53,76 +53,61 @@
 </div>
 
 <div >
+
+
     <h4 align="left">Single Attributes:</h4>
     <div align="left">
-          <div>
-              <h5>Obesity:</h5>
-    <svg width="900" height="300" id="obesitylineChart">
-    </svg>
-                </div>
+        <div>
+            <h5>Obesity:</h5>
+            <svg width="800" height="300" id="obesitylineChart" class="scaling-svg" viewBox="0 -20 800 300" >
+            </svg>
+            <!--<h4 align="right">Scatter Plot Plot:</h4>-->
+
+            <!--<h5>VegetablePlot:</h5>-->
+            <svg width="800" height="300" id="vegetablePlot" viewBox="170 -40 300 300"  class="scaling-right-svg">
+            </svg>
+        </div>
         <div>
             <h5>VegetableConsumption:</h5>
-    <svg width="900" height="300" id="vegetationLineChart">
-    </svg>
-              </div>
-          <div>
-               <h5>FruitConsumption:</h5>
-    <svg width="900" height="300" id="fruitlineChart">
-    </svg>
-                </div>
+            <svg width="800" height="300" id="vegetationLineChart" class="scaling-svg" viewBox="0 -20 800 300">
+            </svg>
+            <svg width="800" height="300" id="fruitPlot"  viewBox="170 -40 300 300"  class="scaling-right-svg">
+            </svg>
+        </div>
+        <div>
+            <h5>FruitConsumption:</h5>
+            <svg width="800" height="300" id="fruitlineChart" class="scaling-svg" viewBox="0 -20 800 300">
+            </svg>
+             <svg width="800" height="300" id="seaFoodPlot" viewBox="170 -40 300 300"  class="scaling-right-svg">
+        </svg>
+        </div>
         <div>
             <h5>SeaFoodConsumption:</h5>
-    <svg width="900" height="300" id="seaFoodChart">
-    </svg>
-                </div>
-         <div>
-             <h5>LifeExpectancy:</h5>
-    <svg width="900" height="300" id="lifeExpectancyChart">
-    </svg>
-                </div>
+            <svg width="800" height="300" id="seaFoodChart" class="scaling-svg" viewBox="0 -20 800 300">
+            </svg>
+            <svg width="200" height="800" id="obesityDistributionChart" transform="rotate(270)" class="scaling-right-barchart-svg" viewBox="-40 1000 650 3">
+            <g id="yAxis" class="xAxis"></g>
+        </svg>
+        </div>
+        <div>
+            <h5>LifeExpectancy:</h5>
+            <svg width="800" height="300" id="lifeExpectancyChart" class="scaling-svg" viewBox="0 -20 800 300">
+            </svg>
+        </div>
 
     </div>
-      <h4 align="right">Scatter Plot Plot:</h4>
-    <div align="right">
-        <div>
-            <h5>VegetablePlot:</h5>
-    <svg width="900" height="200" id="vegetablePlot">
-    </svg>
-              </div>
-          <div>
-               <h5>FruitPlot:</h5>
-    <svg width="900" height="200" id="fruitPlot">
-    </svg>
-                </div>
-        <div>
-            <h5>SeaFoodPlot:</h5>
-    <svg width="900" height="200" id="seaFoodPlot">
-    </svg>
-                </div>
-         <div>
-    <div align="right">
-    <svg width="800" height="600" id="map-view" class="view" align="right">
 
-        <g id="map"> </g>
-    </svg>
+
+
+    <hr>
+
+    <hr>
+    <div>
+        <h3>Comparison Graph</h3>
+
     </div>
-</div>
-<hr>
-
-<hr>
-<div>
-    <h3>Comparison Graph</h3>
-    <svg width="800" height="900" id="obesityDistributionChart" transform="rotate(270)">
-    <!--<svg width="1500" height="1500" id="obesityDistributionChart">-->
-        <g id="yAxis"></g>
-    </svg>
-    <svg width="800" height="900" id="obesityDistributionChart2" transform="rotate(270)">
-    <!--<svg width="1500" height="1500" id="obesityDistributionChart">-->
-        <g id="yAxis2"></g>
-    </svg>
-</div>
-<script type="application/javascript" src="js/ObesityDistributionGraph.js"></script>
-<script type="application/javascript" src="js/lineGraphs.js"></script>
-        <script type="application/javascript" src="js/scatterPlot.js"></script>
+    <script type="application/javascript" src="js/ObesityDistributionGraph.js"></script>
+    <script type="application/javascript" src="js/lineGraphs.js"></script>
+    <script type="application/javascript" src="js/scatterPlot.js"></script>
 </body>
 </html>
