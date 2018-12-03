@@ -62,7 +62,7 @@ class Map {
         .style("opacity", 0);
 
         var geojson = topojson.feature(world, world.objects.countries);
-        var mapsvg=d3.select("#map");
+        var mapsvg=d3.select("#mapSvg");
         self = this;
         this.projection = d3.geoMercator().scale(120).translate([400, 350]);
         let path = d3.geoPath().projection(this.projection);
@@ -74,6 +74,8 @@ class Map {
             .select("#map");
         let view = mapSvg.selectAll("path")
             .data(geojson.features);
+
+
         view
             .enter()
             .append("path")

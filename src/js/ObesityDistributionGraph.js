@@ -101,7 +101,6 @@ class obesityDistributionGraph{
                 })
         }
 
-        console.log(obesityData,'obesityData');
       // var obesityChart=d3.select("#obesityDistributionChart");
         obesityChart.selectAll("rect")
             .data(obesityData)
@@ -126,7 +125,23 @@ class obesityDistributionGraph{
         obesityChart.selectAll("rect")
             .data(obesityData)
             .exit()
-            .remove()
+            .remove();
+
+        obesityChart
+            .append("rect")
+            .attr("width","640")
+            .attr("height","1700")
+            .attr("x","-30")
+            .attr("y","150")
+            .attr("class","border1");
+
+        obesityChart
+            .append("text")
+            .attr("x",300)
+            .attr("y",-535)
+            .attr("transform","rotate(90)")
+            .text("Male and Female obesity distribution for country one")
+            .attr("class","graphHeading1");
 
         handleHover(obesityData);
     }

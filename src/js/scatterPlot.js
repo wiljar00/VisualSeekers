@@ -20,11 +20,11 @@ class ScatterPlot{
 
         obeseList=obeseList.Year.filter(m=>m.Year%10==7);
         obeseList.map(function(d){
-            var object={ObeseData:d.Indicator,Year:d.Year};
-            ObeseVegDataSet.push(object);
-            ObeseFruitDataSet.push(object);
-            ObeseSeafoodDataSet.push(object);
-           }
+                var object={ObeseData:d.Indicator,Year:d.Year};
+                ObeseVegDataSet.push(object);
+                ObeseFruitDataSet.push(object);
+                ObeseSeafoodDataSet.push(object);
+            }
         );
         vegetableData=vegetableData.Year.filter(m=>m.Year%10==7);
         vegetableData.map(function(d,i){
@@ -41,27 +41,27 @@ class ScatterPlot{
             }
         );
         var div = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+            .attr("class", "tooltip")
+            .style("opacity", 0);
 
 
         //Hover Selection
         function handleScatterHover(){
             d3.selectAll('circle')
                 .on('mouseover', function() {
-                var circleclass = d3.select(this).attr('class');
+                    var circleclass = d3.select(this).attr('class');
                     div.transition()
-                    .duration(200)
-                    .style("opacity", .9);
+                        .duration(200)
+                        .style("opacity", .9);
                     div.html("Year: " + circleclass )
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
 
-                d3.selectAll("." + circleclass)
-                    .transition()
-                    .delay(25)
-                    // .attr("fill", "red")
-                    .attr("r", 10);
+                    d3.selectAll("." + circleclass)
+                        .transition()
+                        .delay(25)
+                        // .attr("fill", "red")
+                        .attr("r", 10);
                 })
                 .on('mouseout', function(){
                     var circleclass = d3.select(this).attr('class');
@@ -70,7 +70,7 @@ class ScatterPlot{
                         .delay(150)
                         // .attr('fill', IsComparisonOn?"red":"black")
                         .attr('r', 4)
-                        div.transition()
+                    div.transition()
                         .duration(500)
                         .style("opacity", 0);
                 })
@@ -127,6 +127,28 @@ class ScatterPlot{
             .attr("y","-30")
             .attr("class","border");
 
+        vegetablePlot
+            .append("text")
+            .attr("x",200)
+            .attr("y",0)
+            .text("Obesity Vs Vegetable Consumption")
+            .attr("class","graphHeading");
+
+        vegetablePlot
+            .append("text")
+            .attr("x",-200)
+            .attr("y",-10)
+            .text("Percentage of Population")
+            .attr("transform", "rotate(270)")
+            .attr("class","axisTitle");
+
+        vegetablePlot
+            .append("text")
+            .attr("x",240)
+            .attr("y",240)
+            .text("Kilogram per capita")
+            .attr("class","axisTitle");
+
         fruitPlot.append("g")
             .attr("class", "xAxis")
             .attr("transform", "translate(25," + 190 + ")")
@@ -147,6 +169,28 @@ class ScatterPlot{
             .attr("x","-30")
             .attr("y","-30")
             .attr("class","border");
+
+        fruitPlot
+            .append("text")
+            .attr("x",200)
+            .attr("y",0)
+            .text("Obesity Vs Fruit Consumption")
+            .attr("class","graphHeading");
+
+        fruitPlot
+            .append("text")
+            .attr("x",-200)
+            .attr("y",-10)
+            .text("Percentage of Population")
+            .attr("transform", "rotate(270)")
+            .attr("class","axisTitle");
+
+        fruitPlot
+            .append("text")
+            .attr("x",240)
+            .attr("y",240)
+            .text("Kilogram per capita")
+            .attr("class","axisTitle");
 
         seaFoodPlot.append("g")
             .attr("class", "xAxis")
@@ -169,6 +213,28 @@ class ScatterPlot{
             .attr("y","-30")
             .attr("class","border");
 
+        seaFoodPlot
+            .append("text")
+            .attr("x",200)
+            .attr("y",0)
+            .text("Obesity Vs Fruit Consumption")
+            .attr("class","graphHeading");
+
+        seaFoodPlot
+            .append("text")
+            .attr("x",-200)
+            .attr("y",-10)
+            .text("Percentage of Population")
+            .attr("transform", "rotate(270)")
+            .attr("class","axisTitle");
+
+        seaFoodPlot
+            .append("text")
+            .attr("x",240)
+            .attr("y",240)
+            .text("Kilogram per capita")
+            .attr("class","axisTitle");
+
         if(IsComparisonOn==true) {
             var vegetablePlot = vegetablePlot.append("g")
                 .attr("id","VegPlotForSecondCountry");
@@ -190,7 +256,7 @@ class ScatterPlot{
             .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
-            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -202,41 +268,41 @@ class ScatterPlot{
             .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
-            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
 
-         seaFoodPlot.selectAll("circle")
+        seaFoodPlot.selectAll("circle")
             .data(ObeseSeafoodDataSet)
             .enter().append("circle")
             .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
-            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
             })
 
-         if(IsComparisonOn==false){
-             vegetablePlot.selectAll("circle")
-            .data(ObeseVegDataSet)
-            .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
-            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
-            .attr("r", 4);
-        fruitPlot.selectAll("circle")
-            .data(ObeseFruitDataSet)
-            .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
-            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
-            .attr("r", 4);
-         seaFoodPlot.selectAll("circle")
-            .data(ObeseSeafoodDataSet)
-            .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
-            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
-            .attr("r", 4);
-         }
+        if(IsComparisonOn==false){
+            vegetablePlot.selectAll("circle")
+                .data(ObeseVegDataSet)
+                .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
+                .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+                .attr("r", 4);
+            fruitPlot.selectAll("circle")
+                .data(ObeseFruitDataSet)
+                .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
+                .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+                .attr("r", 4);
+            seaFoodPlot.selectAll("circle")
+                .data(ObeseSeafoodDataSet)
+                .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
+                .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+                .attr("r", 4);
+        }
 
 
         // Add the Y Axis

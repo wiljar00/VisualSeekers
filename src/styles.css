@@ -1,5 +1,7 @@
 .axis {
-    font: 15px sans-serif;
+    font-size: 15px;
+    font-family: Lucida Console, Courier, monospace;
+    color: darkblue;
 }
 .axis path,
 .axis line {
@@ -394,6 +396,13 @@
     text-align : left;
 }
 
+h1{
+    font-family: inherit;
+    color: #db2525;
+    font-size: 38px;
+
+}
+
 
 body, html {
     height: 100%;
@@ -401,6 +410,8 @@ body, html {
     text-align: center;
     margin: 0;
     font-family: Arial;
+    background: ghostwhite;
+
 }
 
 /* Style tab links */
@@ -450,8 +461,13 @@ body, html {
 
 .line {
     fill: none;
-    stroke: blue;
+    stroke: coral;
     stroke-width: 3;
+}
+
+#graphCircle{
+    fill:deepskyblue;
+    opacity: 0.8;
 }
 
 .mapContainer {
@@ -485,6 +501,9 @@ body, html {
 }
 
 #float-button-group-comparision {
+    font-family: inherit, cursiver;
+    font-size: 20px;
+    color: white;
     position:absolute;
     left:80%;
     top:60%;
@@ -602,6 +621,7 @@ div.noDataTooltip{
     top: 0;
     border: 1px #2196F3;
 }
+
 .scaling-right-svg {
     position: relative;
     height: 50%;
@@ -612,24 +632,68 @@ div.noDataTooltip{
 }
 .scaling-right-barchart-svg {
     position: absolute;
-    height: 101.5%;
-    width: 18.3%;
-    left: 64.6%;
-    top: 227.5%;
-    border:1px #2196F3;
+    height: 243.5%;
+    width: 17.5%;
+    left: 66.5%;
+    top: -73%;
+}
+
+#parent{
+    position: relative;
+  height: 100%; /* bigger than your svg */
+  width: 100%;
 }
 .xAxis  text {
-    font: 25px Georgia;
     font-weight: bold;
+    font: 25px monospace;
+    color: darkgray;
 
 }
 .yAxis  text {
-    font: 10px Georgia;
+    font: 10px monospace;
     font-weight: bold;
+    color: darkgray;
 
+}
+
+.graphHeading{
+    color: darkred;
+    font-weight: bold;
+    font: 20px monospace;
+
+}
+
+
+.graphHeading{
+    color: darkred;
+    font-weight: bold;
+    font: 20px monospace;
+
+}
+
+.graphHeading1{
+    color: darkred;
+    font-weight: bold;
+    font: 40px monospace;
+
+}
+
+
+.axisTitle{
+    color: darkred;
+    font-weight: bold;
+    font: 15px monospace;
 }
 
 .border{
     fill: none;
     stroke: #2b8cbe;
+    stroke-width: 6px;
+
+}
+
+.border1{
+    fill: none;
+    stroke: #2b8cbe;
+    stroke-width: 20px;
 }
