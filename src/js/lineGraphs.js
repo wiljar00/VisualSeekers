@@ -260,9 +260,6 @@ class LineGraph{
                 return "_" + year;
             })
 
-        vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
-
-        // vegLineGraph.selectAll("circle").data(vegetableDataset).exit().remove();
         if(!IsDualCountry) {
             vegLineGraph.selectAll("circle")
                 .data(vegetableDataset)
