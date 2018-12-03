@@ -27,21 +27,53 @@ class ScatterPlot{
             }
         );
         vegetableData=vegetableData.Year.filter(m=>m.Year%10==7);
-        vegetableData.map(function(d,i){
-                ObeseVegDataSet[i].VegData = d.Indicator
-
-        });
-        console.log(ObeseVegDataSet,'ObeseVegDataSet');
+        var j=0;
+        for (var i=0;i<4;i++)
+        {
+            var d=vegetableData.filter(m=>m.Year==ObeseVegDataSet[i].Year);
+            if(d.length!=0)
+            {
+               ObeseVegDataSet[i].VegData = vegetableData[j].Indicator
+                j=j+1
+            }
+            else{
+                ObeseVegDataSet[i].VegData=0
+            }
+        }
         fruitConsumptionList=fruitConsumptionList.Year.filter(m=>m.Year%10==7);
-        fruitConsumptionList.map(function(d,i){
-                ObeseFruitDataSet[i].FruitData=d.Indicator
+        j=0;
+        for (var i=0;i<4;i++)
+        {
+            var d=fruitConsumptionList.filter(m=>m.Year==ObeseFruitDataSet[i].Year);
+            if(d.length!=0)
+            {
+               ObeseFruitDataSet[i].FruitData = fruitConsumptionList[j].Indicator
+                j=j+1
             }
-        );
+            else{
+                ObeseFruitDataSet[i].FruitData=0
+            }
+        }
+        // fruitConsumptionList.map(function(d,i){
+        //         ObeseFruitDataSet[i].FruitData=d.Indicator
+        //     }
+        // );
         seafoodConsumptionList=seafoodConsumptionList.Year.filter(m=>m.Year%10==7);
-        seafoodConsumptionList.map(function(d,i){
-                ObeseSeafoodDataSet[i].SeaFoodData=d.Indicator
-            }
-        );
+         j=0;
+         for (var i=0;i<4;i++) {
+             var d = seafoodConsumptionList.filter(m => m.Year == ObeseSeafoodDataSet[i].Year);
+             if (d.length != 0) {
+                 ObeseSeafoodDataSet[i].SeaFoodData = seafoodConsumptionList[j].Indicator;
+                 j = j + 1
+             }
+             else {
+                 ObeseSeafoodDataSet[i].SeaFoodData = 0
+             }
+         }
+        // seafoodConsumptionList.map(function(d,i){
+        //         ObeseSeafoodDataSet[i].SeaFoodData=d.Indicator
+        //     }
+        // );
         var div = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
@@ -257,6 +289,7 @@ class ScatterPlot{
             .enter().append("circle")
             .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", d=>d.VegData==0?0:4)
             .attr("r", 4)
             .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
@@ -271,6 +304,7 @@ class ScatterPlot{
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", 4)
             .attr("fill",IsComparisonOn?"mediumpurple":"coral")
+            .attr("r", d=>d.FruitData==0?0:4)
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -281,6 +315,8 @@ class ScatterPlot{
             .enter().append("circle")
             .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", d=>d.SeaFoodData==0?0:4)
+            .attr("fill",IsComparisonOn?"red":"black")
             .attr("r", 4)
             .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
@@ -305,6 +341,23 @@ class ScatterPlot{
                 .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
                 .attr("r", 4);
         }
+         if(IsComparisonOn==false){
+             vegetablePlot.selectAll("circle")
+            .data(ObeseVegDataSet)
+            .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", d=>d.VegData==0?0:4);
+        fruitPlot.selectAll("circle")
+            .data(ObeseFruitDataSet)
+            .attr("cx", d=>xFruitAxisScale(d.FruitData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", d=>d.FruitData==0?0:4);
+         seaFoodPlot.selectAll("circle")
+            .data(ObeseSeafoodDataSet)
+            .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
+            .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
+            .attr("r", d=>d.SeaFoodData==0?0:4);
+         }
 
 
         // Add the Y Axis

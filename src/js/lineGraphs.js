@@ -170,7 +170,7 @@ class LineGraph{
                         .attr('fill', "black")
                         .attr('r', 4);
             })
-                })
+
             // .on('click', function() {
             //     var circleclass = d3.select(this).attr('class');
             //     console.log(circleclass);
