@@ -70,7 +70,7 @@ class ScatterPlot{
          }
 
         var div = d3.select("body").append("div")
-            .attr("class", "tooltip")
+            .attr("class", "lineTooltip")
             .style("opacity", 0);
 
 
@@ -283,6 +283,8 @@ class ScatterPlot{
         vegetablePlot.selectAll("circle")
             .data(ObeseVegDataSet)
             .enter().append("circle")
+            .transition()
+            .delay(150)
             .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", d=>d.VegData==0?0:4)
