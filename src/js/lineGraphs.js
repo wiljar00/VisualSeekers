@@ -171,6 +171,8 @@ class LineGraph{
                         .attr('fill', "black")
                         .attr('r', 4);
                 })
+
+
         }
 
 

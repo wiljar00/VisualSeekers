@@ -1,4 +1,6 @@
 /** Class implementing the map view. */
+
+
 class Map {
     /**
      * Creates a Map Object
@@ -15,11 +17,11 @@ class Map {
         this.seafoodConsumptionList=[];
         this.FemaleData={};
         this.MaleData={};
-        this.obeseData=[];
+
 
     }
 
-    
+
     /**
      * Function that clears the map
      */
@@ -57,18 +59,19 @@ class Map {
         self=this;
         let selectedCountries = [];
 
-        let div = d3.select("body").append("div")	
-        .attr("class", "noDataTooltip")				
-        .style("opacity", 0);
+        let div = d3.select("body").append("div")
+            .attr("class", "noDataTooltip")
+            .style("opacity", 0);
         let div2 = d3.select("body").append("div")
-        .attr("class", "noDataTooltip")
-        .style("opacity", 0);
+            .attr("class", "noDataTooltip")
+            .style("opacity", 0);
 
         var geojson = topojson.feature(world, world.objects.countries);
         var mapsvg=d3.select("#mapSvg");
         self = this;
         this.projection = d3.geoMercator().scale(120).translate([400, 350]);
         let path = d3.geoPath().projection(this.projection);
+
         let mapSvg = d3.select("#mapSvg")
             .attr("preserveAspectRatio", "xMinYMin meet")
             .attr("viewBox", "0 0 960 500")
@@ -103,12 +106,16 @@ class Map {
                 if(self.countries[j].CountryId==d.id)
                 {
                     countryName=self.countries[j].name;
+                    console.log(countryName);
                 }
             }
-             div2.transition()
-                        .duration(200)
-                        .style("opacity", .9)
+            div2.transition()
+                .duration(200)
+                .style("opacity", .9)
 
+            div2.html(countryName )
+                .style("left", (d3.event.pageX+10) +"px")
+                .style("top", (d3.event.pageY+10) + "px")
                     div2.html(countryName )
                         .style("left", (d3.event.pageX) +"px")
                         .style("top", (d3.event.pageY) + "px")
@@ -126,23 +133,25 @@ class Map {
             div.style("opacity", 0);
             let CountryCode ;
             let dualCountry;
+            let s= document.getElementById("subHeading");
+            s.innerHTML = "Attributes which affects the obesity";
             self.checkBoxValue=document.getElementById("comparision").checked;
             if(self.checkBoxValue)
             {
                 d3.select(this).attr("class", "secondSelected");
                 document.getElementById("comparision").checked = false;
                 document.getElementById("comparision").disabled = true;
-                 CountryCode = d3.select(".secondSelected")._groups[0][0].id;
-                 dualCountry=true
+                CountryCode = d3.select(".secondSelected")._groups[0][0].id;
+                dualCountry=true
             }
             else
             {
                 document.getElementById("comparision").disabled = false;
-            self.clearMap();
-            selectedCountries=[];
-            d3.select(this).attr("class", "selected");
-                 CountryCode = d3.select(".selected")._groups[0][0].id;
-                 dualCountry=false
+                self.clearMap();
+                selectedCountries=[];
+                d3.select(this).attr("class", "selected");
+                CountryCode = d3.select(".selected")._groups[0][0].id;
+                dualCountry=false
             }
 
             self.checkBoxValue=document.getElementById("comparision").checked;
@@ -173,12 +182,12 @@ class Map {
                 else{
 
                     //Show error message
-                    div.transition()		
-                        .duration(200)		
+                    div.transition()
+                        .duration(200)
                         .style("opacity", .9)
 
-                    div.html("No Data Available For This Country" )	
-                        .style("left", (d3.event.pageX) +"px")		
+                    div.html("No Data Available For This Country" )
+                        .style("left", (d3.event.pageX) +"px")
                         .style("top", (d3.event.pageY) + "px")
 
                 }

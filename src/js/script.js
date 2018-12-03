@@ -7,10 +7,10 @@ d3.json("data/countries.json")
     });
 let worldMap= new Map();
 d3.json("data/world.json").then(function(world) {
-        console.log(world,"world");
-        worldMap.drawMap(world,this.countries);
+    console.log(world,"world");
+    worldMap.drawMap(world,this.countries);
 });
-    //------------------------------------------------------------------
+//------------------------------------------------------------------
 obeseList=[];
 vegConsumptionList=[];
 fruitConsumptionList=[];
@@ -55,110 +55,6 @@ d3.csv("data/share_of_males.csv").then(shareOfMales => {
 d3.csv("data/population.csv").then(population => {
     populationList=FormatData(population);
 });
-// d3.json("data/world.json")
-//     .then(function(world) {
-//         drawMap(world,this.countries);
-//     });
-
-
-
-function drawMap(world,countries) {
-
-    var geojson = topojson.feature(world, world.objects.countries);
-    var mapsvg=d3.select("#map");
-    self = this;
-    projection = d3.geoMercator().scale(120).translate([400, 350]);
-    let path = d3.geoPath().projection(projection);
-    let mapSvg = d3.select("#mapSvg")
-        .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "0 0 960 500")
-        //class to make it responsive
-        .classed("svg-content-responsive", true)
-        .select("#map");
-    let view = mapSvg.selectAll("path")
-        .data(geojson.features);
-    view
-        .enter()
-        .append("path")
-        .attr("d", path)
-        .attr("id", function (d) {
-            return d.id
-        })
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1)
-        .attr("class", "countries")
-        .on('click', function () {
-            d3.select("#map").selectAll("path").attr("class", "countries");
-            d3.select(this).attr("class", "selected");
-            Onclick()
-        })
-        .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut);
-
-    function handleMouseOver(d, i) {  // Add interactivity
-
-        let countryName=null;
-
-        for(let j=0; j<self.countries.length; j++)
-        {
-            if(self.countries[j].CountryId==d.id)
-            {
-                countryName=self.countries[j].name;
-                console.log(countryName);
-            }
-        }
-        mapSvg.append("title")
-            .attr('id',"titleid")
-            .text(countryName);
-
-    }
-
-
-        function handleMouseOut(d, i) {
-
-             d3.select("titleid").remove()
-
-        }
-
-
-        // ****** TODO: PART IV ******
-
-    }
-    let mapZoom = d3.zoom()
-        .scaleExtent([1, 32])
-        .on("zoom", function () {
-            this.curScale = d3.event.transform;
-            this.zoomed();
-        }.bind(this));
-    mapSvg.call(mapZoom);
-    this.currentMouse = null;
-    this.curScale = d3.zoomIdentity;
-
-    this.mapContainer.select("#zoom-in")
-        .on("click", function () {
-            mapSvg.call(mapZoom.scaleBy, 1.2);
-        }.bind(this));
-    this.mapContainer.select("#zoom-out")
-        .on("click", function () {
-            mapSvg.call(mapZoom.scaleBy, 1 / 1.2);
-        }.bind(this));
-    this.mapContainer.select("#reset")
-        .on("click", function () {
-            this.curScale.k = 1;
-            this.curScale.x = 0;
-            this.curScale.y = -20;
-            this.zoomed();
-        }.bind(this));
-
-
-
-
-
-
-
-
-
-
 
 function FormatData(data)
 {

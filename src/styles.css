@@ -1,6 +1,6 @@
 .axis {
     font-size: 15px;
-    font-family: Lucida Console, Courier, monospace;
+    font-family: inherit;
     color: darkblue;
 }
 .axis path,
@@ -167,7 +167,8 @@
 
 
 .ticks {
-    font: 10px sans-serif;
+    font: 10px inherit, cursiver;
+    color: darkgray;
 }
 
 .track,
@@ -175,7 +176,16 @@
 .track-overlay {
     stroke-linecap: round;
 }
+.domain path{
+    stroke: #555555;
 
+}
+.tick line{
+    stroke: #555555;
+}
+.tick text{
+    fill: #555555;
+}
 .track {
     stroke: #000;
     stroke-opacity: 0.3;
@@ -262,7 +272,7 @@
 }
 .tooltip-title{
     font-size:18px;
-    font-family: "Arial Black";
+    font-family: inherit;
 }
 .focus circle {
     fill: red;
@@ -365,7 +375,7 @@
     position: absolute;
     text-align: center;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 12px inherit;
     background: lightgrey;
     border: 0px;
     border-radius: 8px;
@@ -376,7 +386,7 @@
     position: absolute;
     width: 150px;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 12px inherit;
     background: lightgrey;
     border: 0px;
     border-radius: 8px;
@@ -384,12 +394,12 @@
 }
 
 @font-face {
-    font-family: Optima;
+    font-family: inherit;
     src: url("./fonts/optima.ttf");
 }
 
 #map text {
-    font-family: Optima;
+    font-family: inherit;
 }
 
 .table-align {
@@ -409,8 +419,8 @@ body, html {
     width: 100%;
     text-align: center;
     margin: 0;
-    font-family: Arial;
-    background: ghostwhite;
+    font-family: inherit;
+
 
 }
 
@@ -461,7 +471,7 @@ body, html {
 
 .line {
     fill: none;
-    stroke: coral;
+    stroke: darkgray;
     stroke-width: 3;
 }
 
@@ -594,7 +604,7 @@ div.tooltip {
     width: 60px;
     height: 10px;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 12px inherit;
     background: lightsteelblue;
     border: 0px;
     border-radius: 8px;
@@ -604,7 +614,7 @@ div.noDataTooltip{
     position: absolute;
     text-align: center;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 12px inherit;
     background: lightsteelblue;
     border: 0px;
     border-radius: 8px;
@@ -638,49 +648,48 @@ div.noDataTooltip{
 
 #parent{
     position: relative;
-  height: 100%; /* bigger than your svg */
-  width: 100%;
+    height: 100%; /* bigger than your svg */
+    width: 100%;
 }
 .xAxis  text {
-    font-weight: bold;
-    font: 25px monospace;
-    color: darkgray;
+    font: 25px inherit;
+    fill: #555555;
 
 }
 .yAxis  text {
-    font: 10px monospace;
-    font-weight: bold;
-    color: darkgray;
+    font: 10px inherit;
+    fill: #555555;
+
+}
+
+.yAxis1{
+    font-size: 25px;
+    font-family: inherit;
+        fill: #555555;
 
 }
 
 .graphHeading{
-    color: darkred;
-    font-weight: bold;
-    font: 20px monospace;
+    fill: #db2525;
+    font: 20px inherit;
 
 }
 
 
-.graphHeading{
-    color: darkred;
-    font-weight: bold;
-    font: 20px monospace;
 
-}
 
 .graphHeading1{
-    color: darkred;
-    font-weight: bold;
-    font: 40px monospace;
+    font-size: 40px;
+    font-family: inherit;
+    fill: #db2525;
+
 
 }
 
 
 .axisTitle{
-    color: darkred;
-    font-weight: bold;
-    font: 15px monospace;
+    fill: #555555;
+    font: 15px inherit;
 }
 
 .border{

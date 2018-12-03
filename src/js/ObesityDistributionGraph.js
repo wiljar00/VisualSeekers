@@ -41,6 +41,7 @@ class obesityDistributionGraph{
             .call(yAxis)
             .selectAll("text")
             .attr("transform","scale(-1,1) rotate(0) ")
+            .attr("class","yAxis1")
             .attr('dx', '-0.25em')
             .attr('dy', '0.2em');
         var obesityData=[];
