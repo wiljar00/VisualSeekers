@@ -28,8 +28,10 @@ class ScatterPlot{
         );
         vegetableData=vegetableData.Year.filter(m=>m.Year%10==7);
         vegetableData.map(function(d,i){
-            ObeseVegDataSet[i].VegData=d.Indicator
+                ObeseVegDataSet[i].VegData = d.Indicator
+
         });
+        console.log(ObeseVegDataSet,'ObeseVegDataSet');
         fruitConsumptionList=fruitConsumptionList.Year.filter(m=>m.Year%10==7);
         fruitConsumptionList.map(function(d,i){
                 ObeseFruitDataSet[i].FruitData=d.Indicator

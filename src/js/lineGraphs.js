@@ -16,6 +16,8 @@ class LineGraph{
         let fruitConsumptionDataSet=[];
         let seafoodConsumptionDataSet=[];
         let lifeExpectancyDataSet=[];
+
+        //Extracting values to prepare path element
         obeseList.Year.map(function(d){
                 years.push(d.Year)
             }
@@ -24,33 +26,24 @@ class LineGraph{
                 ObeseDataSet.push(d.Indicator)
             }
         );
-        console.log(ObeseDataSet,'ObeseDataSet');
         vegetableData.Year.map(function(d){
                 vegConsumptionDataSet.push(d.Indicator)
             }
         );
-        console.log(vegConsumptionDataSet,'vegConsumptionDataSet');
         fruitConsumptionList.Year.map(function(d){
                 fruitConsumptionDataSet.push(d.Indicator)
             }
         );
-        console.log(fruitConsumptionDataSet,'fruitConsumptionDataSet');
-        console.log(seafoodConsumptionList,'seafoodConsumptionDataSet');
         seafoodConsumptionList.Year.map(function(d){
                 seafoodConsumptionDataSet.push(d.Indicator)
             }
         );
-        console.log(seafoodConsumptionDataSet,'seafoodConsumptionDataSet');
-
         lifeExpectancyList.Year.map(function(d){
                 lifeExpectancyDataSet.push(d.Indicator)
             }
         );
-        console.log(lifeExpectancyDataSet,'lifeExpectancyDataSet');
 
-
-        let maxYears = d3.max(years);
-
+        //taking different scales to show
         let xAxisScale=d3.scaleBand()
             .domain(years)
             .range([0, 700]);
@@ -71,6 +64,7 @@ class LineGraph{
             .domain([95, 40])
             .range([0, 200]);
 
+        //Creating the axses
         let xAxis = d3.axisBottom(xAxisScale);
         let yAxis = d3.axisLeft(yAxisScale);
         let vegyAxis = d3.axisLeft(vegyAxisScale);
@@ -85,9 +79,10 @@ class LineGraph{
         LifeExpectancyAxis.scale(lifeExpectancyScale);
 
         var yScale = d3.scaleLinear()
-            .domain([100, 0]) // input
-            .range([0,200]); // output
+            .domain([100, 0])
+            .range([0,200]);
 
+        //Creating line for path element
         var line = d3.line()
             .x(function(d) { return xAxisScale(d.Year)+8; })
             .y(function(d) { return yAxisScale(d.Indicator)+12; })
@@ -113,7 +108,7 @@ class LineGraph{
             .y(function(d) { return lifeExpectancyScale(d.Indicator)+12; })
             .curve(d3.curveMonotoneX);
 
-        // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
+       //Setting datasets to plot
         var dataset = obeseList.Year;
         var vegetableDataset=vegetableData.Year;
         var fruitDataSet=fruitConsumptionList.Year;
@@ -127,7 +122,7 @@ class LineGraph{
         var seaFoodGraph=d3.select("#seaFoodChart");
         var lifeExpectancyGraph=d3.select("#lifeExpectancyChart");
 
-        //append the line graph
+        //check for dual country
         if(IsDualCountry) {
 
         }
@@ -175,13 +170,6 @@ class LineGraph{
                         .attr('fill', "black")
                         .attr('r', 4);
             })
-                // .on('click', function() {
-                //     var circleclass = d3.select(this).attr('class');
-                //     console.log(circleclass);
-                //     d3.selectAll("." + circleclass)
-                //         .attr("fill", "red")
-                //         .attr("r", 10);
-                //     })
         }
 
 
@@ -207,8 +195,7 @@ class LineGraph{
                 return "_" + year;
             });
 
-        // lineGraph1.selectAll("circle").data(dataset).exit().remove();
-
+        //not updating if two countries are selected instaed adding another line graph
         if(!IsDualCountry) {
             lineGraph1.selectAll("circle")
             .data(dataset)
@@ -320,9 +307,7 @@ class LineGraph{
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
-            })
-
-        // seaFoodGraph.selectAll("circle").data(seaFoodDataSet).exit().remove();
+            });
 
         if(!IsDualCountry) {
             seaFoodGraph.selectAll("circle")
@@ -360,8 +345,6 @@ class LineGraph{
                 let year = d.Year;
                 return "_" + year;
             });
-
-        // lifeExpectancyGraph.selectAll("circle").data(lifeExpectancySet).exit().remove();
 
         if(!IsDualCountry) {
             lifeExpectancyGraph.selectAll("circle")

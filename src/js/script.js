@@ -160,12 +160,6 @@ function drawMap(world,countries) {
 
 
 
-// FetchData();
-//
-// setTimeout(CallObjects, 400);
-//
-
-//
 function FormatData(data)
 {
     var List=[];

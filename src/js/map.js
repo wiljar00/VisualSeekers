@@ -60,6 +60,9 @@ class Map {
         let div = d3.select("body").append("div")	
         .attr("class", "noDataTooltip")				
         .style("opacity", 0);
+        let div2 = d3.select("body").append("div")
+        .attr("class", "noDataTooltip")
+        .style("opacity", 0);
 
         var geojson = topojson.feature(world, world.objects.countries);
         var mapsvg=d3.select("#map");
@@ -101,19 +104,28 @@ class Map {
                     console.log(countryName);
                 }
             }
-            mapSvg.append("title")
-                .attr('id',"titleid")
-                .text(countryName);
+             div2.transition()
+                        .duration(200)
+                        .style("opacity", .9)
+
+                    div2.html(countryName )
+                        .style("left", (d3.event.pageX+10) +"px")
+                        .style("top", (d3.event.pageY+10) + "px")
+            // mapSvg.append("title")
+            //     .attr('id',"titleid")
+            //     .text(countryName);
         }
 
 
         function handleMouseOut(d, i) {
-
-            d3.select("titleid").remove()
+            div2.style("opacity", 0);
+            // d3.select("titleid").remove()
 
         }
 
         function onclick() {
+            div2.style("opacity", 0);
+            div.style("opacity", 0);
             let CountryCode ;
             let dualCountry;
             self.checkBoxValue=document.getElementById("comparision").checked;
