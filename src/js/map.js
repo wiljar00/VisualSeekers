@@ -103,7 +103,6 @@ class Map {
                 if(self.countries[j].CountryId==d.id)
                 {
                     countryName=self.countries[j].name;
-                    console.log(countryName);
                 }
             }
              div2.transition()
@@ -111,8 +110,8 @@ class Map {
                         .style("opacity", .9)
 
                     div2.html(countryName )
-                        .style("left", (d3.event.pageX+10) +"px")
-                        .style("top", (d3.event.pageY+10) + "px")
+                        .style("left", (d3.event.pageX) +"px")
+                        .style("top", (d3.event.pageY) + "px")
 
         }
 
@@ -149,7 +148,6 @@ class Map {
             self.checkBoxValue=document.getElementById("comparision").checked;
 
             selectedCountries.push(CountryCode);
-            console.log("selectedCountries "+selectedCountries);
             if (CountryCode != null) {
                 self.obeseData = obeseList.filter(m => m.Code == CountryCode);
                 self.vegetableData = vegConsumptionList.filter(m => m.Code == CountryCode);

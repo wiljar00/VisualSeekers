@@ -12,14 +12,11 @@ class obesityDistributionGraph{
     };
     UpdateGraph(FemaleData,MaleData,IsdualCountry){
         var self=this;
-        console.log(FemaleData,MaleData,"UpdateGraph");
         let years=[];
-        console.log("here"+FemaleData)
         FemaleData.Year.map(function(d){
                 years.push(d.Year)
             }
         );
-        console.log(years,'years');
         let xAxisScale=d3.scaleLinear()
             .domain([0,200])
             .range([0, 1500]);
@@ -67,8 +64,6 @@ class obesityDistributionGraph{
             obesityData.push(dataFormat);
         }
 
-        console.log(obesityData,'obesityData');
-        // var obesityChart=d3.select("#obesityDistributionChart");
        var div = d3.select("body").append("div")
        .attr("class", "noDataTooltip")
        .style("opacity", 0);
