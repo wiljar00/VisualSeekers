@@ -78,12 +78,12 @@ class obesityDistributionGraph{
         function handleHover(d){
             d3.selectAll('rect')
                 .on('mouseover', function() {
-                var percentage = d3.select(this).attr('width');
+                var percentage = d3.select(this).attr('percentage');
                 var gender = d3.select(this).attr('class');
                     div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                    div.html("Gender: " + gender + "<br/>" + "Percentage: " + percentage )
+                    div.html("Gender: " + gender + "<br/>" + "Percentage: " + percentage + "%" )
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
                 })
@@ -101,7 +101,6 @@ class obesityDistributionGraph{
                 })
         }
 
-        console.log(obesityData,'obesityData');
       // var obesityChart=d3.select("#obesityDistributionChart");
         obesityChart.selectAll("rect")
             .data(obesityData)
@@ -111,6 +110,7 @@ class obesityDistributionGraph{
             .attr("y",m=>200+40*m.y)
             .attr("height",25)
             .attr("width",m=>xAxisScale(m.Indicator))
+            .attr("percentage", m=>m.Indicator)
             .attr("class",d=>d.Gender=='F'?"female":"male")
 
         obesityChart.selectAll("rect")
@@ -119,12 +119,29 @@ class obesityDistributionGraph{
             .attr("y",m=>200+40*m.y)
             .attr("height",25)
             .attr("width",m=>xAxisScale(m.Indicator))
+            .attr("percentage", m=>m.Indicator)
             .attr("class",d=>d.Gender=='F'?"female":"male")
 
         obesityChart.selectAll("rect")
             .data(obesityData)
             .exit()
-            .remove()
+            .remove();
+
+        obesityChart
+            .append("rect")
+            .attr("width","640")
+            .attr("height","1700")
+            .attr("x","-30")
+            .attr("y","150")
+            .attr("class","border1");
+
+        obesityChart
+            .append("text")
+            .attr("x",300)
+            .attr("y",-535)
+            .attr("transform","rotate(90)")
+            .text("Male and Female obesity distribution for country one")
+            .attr("class","graphHeading1");
 
         handleHover(obesityData);
     }

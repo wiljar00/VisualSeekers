@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obesity-Trends</title>
+    <!--script src="https://d3js.org/d3.v5.js"></script-->
+    <script src="js/d3.js"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script-->
+    <script src="js/topojson.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <script type="application/javascript" src="js/script.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Obesity Trends</h1>
+    </header>
+
+</div >
+
+<h3>Visualization for Obesity trends depends on various attributes</h3>
+
+<div align="center" class="svg-container">
+    <svg width="1000" height="700" id="mapSvg" >
+
+        <g id="map" > </g>
+    </svg>
+
+</div>
+
+<div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group" align="left">
+    <button type="button" class="btn btn-default" id="zoom-in"><span class="fa fa-search-plus" aria-hidden="true"></span></button>
+    <button type="button" class="btn btn-default" id="zoom-out"><span class="fa fa-search-minus" aria-hidden="true"></span></button>
+    <button type="button" class="btn btn-default" id="reset"><span class="fa fa-retweet" aria-hidden="true"></span></button>
+</div>
+
+<div >
+    <h4 align="left">Single Attributes:</h4>
+    <div align="left">
+          <div>
+              <h5>Obesity:</h5>
+    <svg width="900" height="300" id="obesitylineChart">
+    </svg>
+                </div>
+        <div>
+            <h5>VegetableConsumption:</h5>
+<<<<<<< HEAD
+            <svg width="900" height="300" id="vegetationLineChart">
+            </svg>
+        </div>
+        <div>
+            <h5>FruitConsumption:</h5>
+            <svg width="900" height="200" id="fruitlineChart">
+            </svg>
+        </div>
+        <div>
+            <h5>SeaFoodConsumption:</h5>
+            <svg width="900" height="200" id="seaFoodChart">
+            </svg>
+        </div>
+        <div>
+            <h5>LifeExpectancy:</h5>
+            <svg width="900" height="200" id="lifeExpectancyChart">
+            </svg>
+        </div>
+        <div>
+            <h5>Obesity:</h5>
+            <svg width="900" height="200" id="obesitylineChart">
+            </svg>
+        </div>
+=======
+    <svg width="900" height="300" id="vegetationLineChart">
+    </svg>
+              </div>
+          <div>
+               <h5>FruitConsumption:</h5>
+    <svg width="900" height="300" id="fruitlineChart">
+    </svg>
+                </div>
+        <div>
+            <h5>SeaFoodConsumption:</h5>
+    <svg width="900" height="300" id="seaFoodChart">
+    </svg>
+                </div>
+         <div>
+             <h5>LifeExpectancy:</h5>
+    <svg width="900" height="300" id="lifeExpectancyChart">
+    </svg>
+                </div>
+
+>>>>>>> fa41b9b408e496b16958e0abf3e2248a99665f01
+    </div>
+    <div align="right">
+        <svg width="800" height="600" id="map-view" class="view" align="right">
+
+            <g id="map"> </g>
+        </svg>
+    </div>
+</div>
+</div>
+<hr>
+
+<hr>
+<div>
+    <h3>Comparison Graph</h3>
+    <svg width="2000" height="2000" id="obesityDistributionChart" transform="rotate(270)">
+        <g id="yAxis"></g>
+    </svg>
+</div>
+<script type="application/javascript" src="js/ObesityDistributionGraph.js"></script>
+<script type="application/javascript" src="js/lineGraphs.js"></script>
+</body>
+</html>
