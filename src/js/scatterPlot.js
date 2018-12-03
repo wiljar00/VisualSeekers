@@ -316,7 +316,7 @@ class ScatterPlot{
             .attr("cx", d=>xSeaFoodAxisScale(d.SeaFoodData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", d=>d.SeaFoodData==0?0:4)
-            .attr("fill",IsComparisonOn?"red":"black")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("r", 4)
             .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){

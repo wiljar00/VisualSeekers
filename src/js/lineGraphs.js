@@ -3,7 +3,7 @@ class LineGraph{
 
     }
 
-    updateLineGraphs(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList,IsDualCountry){
+    updateLineGraphs(obeseList,vegetableData,fruitConsumptionList,seafoodConsumptionList,lifeExpectancyList,IsComparisonOn){
 
         var self=this;
         var margin = {top: 30, right: 20, bottom: 30, left: 50},
@@ -16,6 +16,7 @@ class LineGraph{
         let fruitConsumptionDataSet=[];
         let seafoodConsumptionDataSet=[];
         let lifeExpectancyDataSet=[];
+        let IsDualCountry=IsComparisonOn;
 
         //Extracting values to prepare path element
         obeseList.Year.map(function(d){
@@ -108,7 +109,7 @@ class LineGraph{
             .y(function(d) { return lifeExpectancyScale(d.Indicator)+12; })
             .curve(d3.curveMonotoneX);
 
-       //Setting datasets to plot
+        //Setting datasets to plot
         var dataset = obeseList.Year;
         var vegetableDataset=vegetableData.Year;
         var fruitDataSet=fruitConsumptionList.Year;
@@ -169,7 +170,7 @@ class LineGraph{
                         .delay(150)
                         .attr('fill', "black")
                         .attr('r', 4);
-            })
+                })
 
             // .on('click', function() {
             //     var circleclass = d3.select(this).attr('class');
@@ -197,8 +198,8 @@ class LineGraph{
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>yAxisScale(d.Indicator)+12)
             .attr("r", 4)
-            .attr("id","graphCircle")
-            .attr("fill","black")
+            // .attr("id","graphCircle")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -213,8 +214,8 @@ class LineGraph{
                 .attr("cx", d => xAxisScale(d.Year) + 50)
                 .attr("cy", d => yAxisScale(d.Indicator) + 12)
                 .attr("r", 4)
-                .attr("id","graphCircle")
-                .attr("fill", "black")
+                // .attr("id","graphCircle")
+                .attr("fill", IsComparisonOn?"mediumpurple":"coral")
                 .attr("class", function (d) {
                     let year = d.Year;
                     return "_" + year;
@@ -253,8 +254,8 @@ class LineGraph{
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>vegyAxisScale(d.Indicator)+12)
             .attr("r", 4)
-            .attr("id","graphCircle")
-            .attr("fill","black")
+            // .attr("id","graphCircle")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -268,8 +269,8 @@ class LineGraph{
                 .attr("cx", d => xAxisScale(d.Year) + 50)
                 .attr("cy", d => vegyAxisScale(d.Indicator) + 12)
                 .attr("r", 4)
-                .attr("id","graphCircle")
-                .attr("fill", "black")
+                // .attr("id","graphCircle")
+                .attr("fill",IsComparisonOn?"mediumpurple":"coral")
                 .attr("class", function (d) {
                     let year = d.Year;
                     return "_" + year;
@@ -306,8 +307,8 @@ class LineGraph{
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>fruitAxisScale(d.Indicator)+12)
             .attr("r", 4)
-            .attr("id","graphCircle")
-            .attr("fill","black")
+            //.attr("id","graphCircle")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -322,8 +323,8 @@ class LineGraph{
                 .attr("cx", d => xAxisScale(d.Year) + 50)
                 .attr("cy", d => fruitAxisScale(d.Indicator) + 12)
                 .attr("r", 4)
-                .attr("id","graphCircle")
-                .attr("fill", "black")
+                // .attr("id","graphCircle")
+                .attr("fill", IsComparisonOn?"mediumpurple":"coral")
                 .attr("class", function (d) {
                     let year = d.Year;
                     return "_" + year;
@@ -360,8 +361,8 @@ class LineGraph{
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>seaFoodAxisScale(d.Indicator)+12)
             .attr("r", 4)
-            .attr("id","graphCircle")
-            .attr("fill","black")
+            // .attr("id","graphCircle")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -375,8 +376,8 @@ class LineGraph{
                 .attr("cx", d => xAxisScale(d.Year) + 50)
                 .attr("cy", d => seaFoodAxisScale(d.Indicator) + 12)
                 .attr("r", 4)
-                            .attr("id","graphCircle")
-                .attr("fill", "black")
+                //.attr("id","graphCircle")
+                .attr("fill", IsComparisonOn?"mediumpurple":"coral")
                 .attr("class", function (d) {
                     let year = d.Year;
                     return "_" + year;
@@ -414,8 +415,8 @@ class LineGraph{
             .attr("cx", d=>xAxisScale(d.Year)+50)
             .attr("cy", d=>lifeExpectancyScale(d.Indicator)+12)
             .attr("r", 4)
-            .attr("fill","black")
-                        .attr("id","graphCircle")
+            .attr("fill",IsComparisonOn?"mediumpurple":"coral")
+            //.attr("id","graphCircle")
             .attr("class", function(d){
                 let year = d.Year;
                 return "_" + year;
@@ -429,8 +430,8 @@ class LineGraph{
                 .attr("cx", d => xAxisScale(d.Year) + 50)
                 .attr("cy", d => lifeExpectancyScale(d.Indicator) + 12)
                 .attr("r", 4)
-                            .attr("id","graphCircle")
-                .attr("fill", "black")
+               // .attr("id","graphCircle")
+                .attr("fill", IsComparisonOn?"mediumpurple":"coral")
                 .attr("class", function (d) {
                     let year = d.Year;
                     return "_" + year;
