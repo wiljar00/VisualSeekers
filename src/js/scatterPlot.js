@@ -18,6 +18,7 @@ class ScatterPlot{
             }
         );
 
+        //Creating datasets to show scatterplot
         obeseList=obeseList.Year.filter(m=>m.Year%10==7);
         obeseList.map(function(d){
                 var object={ObeseData:d.Indicator,Year:d.Year};
@@ -54,10 +55,7 @@ class ScatterPlot{
                 ObeseFruitDataSet[i].FruitData=0
             }
         }
-        // fruitConsumptionList.map(function(d,i){
-        //         ObeseFruitDataSet[i].FruitData=d.Indicator
-        //     }
-        // );
+
         seafoodConsumptionList=seafoodConsumptionList.Year.filter(m=>m.Year%10==7);
          j=0;
          for (var i=0;i<4;i++) {
@@ -70,10 +68,7 @@ class ScatterPlot{
                  ObeseSeafoodDataSet[i].SeaFoodData = 0
              }
          }
-        // seafoodConsumptionList.map(function(d,i){
-        //         ObeseSeafoodDataSet[i].SeaFoodData=d.Indicator
-        //     }
-        // );
+
         var div = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
@@ -153,6 +148,7 @@ class ScatterPlot{
             .style("text-anchor", "start")
             .style("font-size", "10px");
 
+        //Border
         vegetablePlot
             .append("rect")
             .attr("width","750")
@@ -172,7 +168,7 @@ class ScatterPlot{
             .append("text")
             .attr("x",-200)
             .attr("y",-10)
-            .text("Percentage of Population")
+            .text("Percentage of Obese")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -215,7 +211,7 @@ class ScatterPlot{
             .append("text")
             .attr("x",-200)
             .attr("y",-10)
-            .text("Percentage of Population")
+            .text("Percentage of Obese")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -251,14 +247,14 @@ class ScatterPlot{
             .append("text")
             .attr("x",200)
             .attr("y",0)
-            .text("Obesity Vs Fruit Consumption")
+            .text("Obesity Vs SeaFood Consumption")
             .attr("class","graphHeading");
 
         seaFoodPlot
             .append("text")
             .attr("x",-200)
             .attr("y",-10)
-            .text("Percentage of Population")
+            .text("Percentage of Obese")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 

@@ -140,7 +140,7 @@ class obesityDistributionGraph{
             .attr("x",300)
             .attr("y",-535)
             .attr("transform","rotate(90)")
-            .text("Male and Female obesity distribution for country one")
+            .text(IsdualCountry?"Male and Female obesity distribution for country two":"Male and Female obesity distribution for country one")
             .attr("class","graphHeading1");
 
         handleHover(obesityData);
