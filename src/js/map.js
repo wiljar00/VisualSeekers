@@ -134,7 +134,7 @@ class Map {
             let CountryCode,countryName ;
             let dualCountry;
             let s= document.getElementById("subHeading");
-            s.innerHTML = "Attributes which affects the obesity";
+            s.innerHTML = "Single Attributes and Their Relation to Obesity";
             self.checkBoxValue=document.getElementById("comparision").checked;
             if(self.checkBoxValue)
             {

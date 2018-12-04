@@ -220,7 +220,7 @@ class LineGraph{
             .append("text")
             .attr("x",240)
             .attr("y",20)
-            .text("Obesity percentage over year")
+            .text("Yearly Percentage of Obese Adults")
             .attr("color","darkred")
             .attr("class","graphHeading");
 
@@ -228,7 +228,7 @@ class LineGraph{
             .append("text")
             .attr("x",-200)
             .attr("y",20)
-            .text("Percentage of population")
+            .text("Percentage of Population")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -275,14 +275,14 @@ class LineGraph{
             .append("text")
             .attr("x",240)
             .attr("y",20)
-            .text("Vegetable consumption over year")
+            .text("Yearly Vegetable Consumption")
             .attr("class","graphHeading");
 
         vegLineGraph
             .append("text")
             .attr("x",-200)
             .attr("y",18)
-            .text("Kilogram per capita")
+            .text("Kilogram per Capita")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -329,7 +329,7 @@ class LineGraph{
             .append("text")
             .attr("x",240)
             .attr("y",20)
-            .text("Fruit consumption over year")
+            .text("Yearly Fruit Consumption")
             .attr("class","graphHeading");
 
         fruitLineGraph
@@ -382,7 +382,7 @@ class LineGraph{
             .append("text")
             .attr("x",240)
             .attr("y",20)
-            .text("Seafood consumption over year")
+            .text("Yearly Seafood Consumption")
             .attr("class","graphHeading");
 
         seaFoodGraph
@@ -436,7 +436,7 @@ class LineGraph{
             .append("text")
             .attr("x",240)
             .attr("y",20)
-            .text("Life expectancy over year")
+            .text("Yearly Life Expectancy")
             .attr("class","graphHeading");
 
         lifeExpectancyGraph

@@ -161,14 +161,14 @@ class ScatterPlot{
             .append("text")
             .attr("x",200)
             .attr("y",0)
-            .text("Obesity Vs Vegetable Consumption")
+            .text("Obesity vs. Vegetable Consumption")
             .attr("class","graphHeading");
 
         vegetablePlot
             .append("text")
             .attr("x",-200)
             .attr("y",-10)
-            .text("Percentage of Obese")
+            .text("Percent of Obese Adults")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -176,7 +176,7 @@ class ScatterPlot{
             .append("text")
             .attr("x",240)
             .attr("y",240)
-            .text("Kilogram per capita")
+            .text("Kilogram per Capita")
             .attr("class","axisTitle");
 
         fruitPlot.append("g")
@@ -204,14 +204,14 @@ class ScatterPlot{
             .append("text")
             .attr("x",200)
             .attr("y",0)
-            .text("Obesity Vs Fruit Consumption")
+            .text("Obesity vs. Fruit Consumption")
             .attr("class","graphHeading");
 
         fruitPlot
             .append("text")
             .attr("x",-200)
             .attr("y",-10)
-            .text("Percentage of Obese")
+            .text("Percent of Obese Adults")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -219,7 +219,7 @@ class ScatterPlot{
             .append("text")
             .attr("x",240)
             .attr("y",240)
-            .text("Kilogram per capita")
+            .text("Kilogram per Capita")
             .attr("class","axisTitle");
 
         seaFoodPlot.append("g")
@@ -247,14 +247,14 @@ class ScatterPlot{
             .append("text")
             .attr("x",200)
             .attr("y",0)
-            .text("Obesity Vs SeaFood Consumption")
+            .text("Obesity vs. SeaFood Consumption")
             .attr("class","graphHeading");
 
         seaFoodPlot
             .append("text")
             .attr("x",-200)
             .attr("y",-10)
-            .text("Percentage of Obese")
+            .text("Percent of Obese Adults")
             .attr("transform", "rotate(270)")
             .attr("class","axisTitle");
 
@@ -262,7 +262,7 @@ class ScatterPlot{
             .append("text")
             .attr("x",240)
             .attr("y",240)
-            .text("Kilogram per capita")
+            .text("Kilogram per Capita")
             .attr("class","axisTitle");
 
         if(IsComparisonOn==true) {
@@ -283,8 +283,6 @@ class ScatterPlot{
         vegetablePlot.selectAll("circle")
             .data(ObeseVegDataSet)
             .enter().append("circle")
-            .transition()
-            .delay(150)
             .attr("cx", d=>xVegyAxisScale(d.VegData)+25)
             .attr("cy", d=>yAxisObeseScale(d.ObeseData)-12)
             .attr("r", d=>d.VegData==0?0:4)
