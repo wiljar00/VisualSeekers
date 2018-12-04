@@ -471,6 +471,7 @@ A minor pitfall that was needed addressing was the fact that, in every country, 
 
 The comparison graph at the bottom of the visualization was changed to a vertical stacked bar chart. This was to enable easier viewing of differences between obesity percentages according to gender. More adjustments were made to the formatting of each of the previous graphs as well to create a more cohesive overall visualization. 
 
+
 **Final Visualization**
 -
 The final visualization has several changes from the original design. In this section, we will expound on the changes and final product of our work. 
@@ -479,36 +480,39 @@ The final visualization has several changes from the original design. In this se
 
 The top of the view now includes a title and brief summary of the visualization. Under the title, the first thing we see is a world map. The color is changed to a blue background, and we have added a hover feature to show the country's name. 
 
-(Insert Screenshot)
+![Image sketch](ProposalSketches/countryName.png)
 
 For functionality, we have added error checking to show a message when a country is selected that has no data in the worldwide dataset.  We have also created a legend to show the selected country on the right side of the map. 
+
+![Image sketch](ProposalSketches/noData.png)
 
 **Line Graphs**
 Below the map, we have arranged the line graphs into a single column on the left side of the view. They show five different singular attributes over time. Each graph has a hover feature on the line to show the year of each specific point. Hovering the mouse pointer over each point will also highlight the data shown in the corresponding points on the scatterplots. 
 
-(Insert Screenshot)
+![Image sketch](ProposalSketches/lineGraphsLeft.png)
 
 **Scatter Plot Graphs**
 On the right side of the view, we have reorganized the graphs to show three scatter plot graphs and a comparison graph. The scatter plot graphs show the direct correlation between each attribute and it's relationship with obesity by using them both as scales. Each point has a feature to highlight related data by hovering over the desired point. 
 
-(insert Screenshot)
+![Image sketch](ProposalSketches/hoverFeature.png)
 
 **Stacked Bar Charts/Obesity Distribution**
 The bottom graph we have added shows the difference in obesity between genders of the selected country. This graph shows the percentage of each gender that is obese and each gender is stacked to show the total percentage. This enables the viewer to see trends. We have also added a hover feature to show the specific gender of each bar and it's specific obesity percentage. 
 
-(insert Screenshot)
+![Image sketch](ProposalSketches/obesityDist.png)
 
 **Comparison Features**
 The comparison feature is functioning and we have added the option to select on the world map. Having one country selected shows the graphs with it's dataset, and selecting the comparison box enables the visualization to load another dataset to compare. When a second country is selected, the line graphs and scatter charts are shown with both datasets in the same color as their selected country on the world map. This enables the viewer to easily distinguish the difference between countries and their trend lines. 
+
+![Image sketch](ProposalSketches/compareLegend.png)
 
 Error checking was implemented in the comparison code to ensure that selecting more than two countries is not possible. This is a feature that could be changed in another version of this visualization, but for this visualization, using two datasets is enough information to properly compare two countries. 
 
 When two countries are being compared, the visualization will create a second stacked bar chart to show the difference as well. There are two graphs created with their trend lines and percentages shown by year with the same hovering features implemented. 
 
-(insert screenshot)
+![Image sketch](ProposalSketches/doubleObesityDist.png)
 
 **Insights**
 
 This visualization has shown obesity is a potential danger to all over the world. In few countries growth rate of obese is more and in some other countries it is less. But in almost all countries we could see the increase of obeses. And main purpose of our visualization is how far diet consumption effects obesity.By making this visualization we could see that growth rate of vegetable consumption and growth rate of obesity is consumptions are inversly proportional and this could be seen clear in the scatter plots that we have provided. And we could also figured it out that fruit consumption is directly proportional to the obesity for most of the countries. Suprisingly obesity didnt effect life expectancy much instead it has increased. we could take it that more people are getting food and there are few deaths because of hunger. And as expected with seafood which says good for health is proved to be good and it is not the contributor of obesity. Through our visualization we found more vegetables, less fruits and more seafood to stay away from the obesity.
-
 
