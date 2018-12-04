@@ -8,8 +8,8 @@ Group project for CS5890.
 ---
 
 **Group Members:**
-  *Aditi Maheshwari*
-  *Pratyusha Sai Kamarouthu*
+  *Aditi Maheshwari,*
+  *Pratyusha Sai Kamarouthu,*
   *Jarom Wilcox*
 
 ---
@@ -17,4 +17,9 @@ Group project for CS5890.
 **Project Name: Obesity Trends**
 The goal of this visualization is to create a tool to identify the contributing factors the the increasing worldwide obesity in adults. 
 
-*Refer to process.md to view the details and progress log of this project.*
+**Process Book**
+[a relative link](process.md)
+
+**Screen Cast of Visualization**
+
+[linkname](https://youtu.be/bUlG0cQPOYM)
