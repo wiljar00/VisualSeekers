@@ -18,8 +18,10 @@ Group project for CS5890.
 The goal of this visualization is to create a tool to identify the contributing factors the the increasing worldwide obesity in adults. 
 
 **Process Book**
-[a relative link](process.md)
+[Click here to view the process book: ](process.md)
 
 **Screen Cast of Visualization**
 
-[linkname](https://youtu.be/bUlG0cQPOYM)
+[Link to screencast on YouTube: ](https://youtu.be/bUlG0cQPOYM)
+
+
