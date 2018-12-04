@@ -687,6 +687,12 @@ div.lineTooltip{
 
 }
 
+.legendFont{
+    fill:white;
+    font: 20px inherit;
+
+}
+
 
 
 

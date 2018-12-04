@@ -106,7 +106,6 @@ class Map {
                 if(self.countries[j].CountryId==d.id)
                 {
                     countryName=self.countries[j].name;
-                    console.log(countryName);
                 }
             }
             div2.transition()
@@ -129,9 +128,10 @@ class Map {
         }
 
         function onclick() {
+            var mapsvg=d3.select("#mapSvg");
             div2.style("opacity", 0);
             div.style("opacity", 0);
-            let CountryCode ;
+            let CountryCode,countryName ;
             let dualCountry;
             let s= document.getElementById("subHeading");
             s.innerHTML = "Attributes which affects the obesity";
@@ -141,18 +141,53 @@ class Map {
                 d3.select(this).attr("class", "secondSelected");
                 document.getElementById("comparision").checked = false;
                 document.getElementById("comparision").disabled = true;
-                CountryCode = d3.select(".secondSelected")._groups[0][0].id;
-                dualCountry=true
+                 CountryCode = d3.select(".secondSelected")._groups[0][0].id;
+                 countryName=self.countries.filter(m=>m.CountryId==CountryCode);
+                 dualCountry=true
+                 mapsvg.append("rect")
+                .attr("x",800)
+                .attr("y",120)
+                .attr("height",20)
+                .attr("width",20)
+                .attr("fill","mediumpurple")
+                     .attr("id","country2Legend");
+                 mapsvg.append("text")
+                .attr("dx",823)
+                .attr("dy",134)
+                     .text(countryName[0].name)
+                     .attr("id","country2")
+                .attr("color","white")
+                .attr("class","legendFont")
             }
             else
             {
+                d3.select("#country2").remove();
+                d3.select("#country2Legend").remove();
                 document.getElementById("comparision").disabled = false;
-                self.clearMap();
-                selectedCountries=[];
-                d3.select(this).attr("class", "selected");
-                CountryCode = d3.select(".selected")._groups[0][0].id;
-                dualCountry=false
+            self.clearMap();
+            selectedCountries=[];
+            d3.select(this).attr("class", "selected");
+                 CountryCode = d3.select(".selected")._groups[0][0].id;
+                 countryName=self.countries.filter(m=>m.CountryId==CountryCode);
+                 console.log(self.countries,"self.countries");
+                 dualCountry=false;
+                mapsvg.append("rect")
+                .attr("x",800)
+                .attr("y",80)
+                .attr("height",20)
+                .attr("width",20)
+                .attr("fill","coral");
+                console.log(countryName[0],"countryName[0]");
+                d3.select("#country1").remove();
+                 mapsvg.append("g").append("text")
+                .attr("dx",823)
+                .attr("dy",94)
+                     .text(countryName[0].name)
+                     .attr("id","country1")
+                .attr("color","white")
+                .attr("class","legendFont")
             }
+
 
             self.checkBoxValue=document.getElementById("comparision").checked;
 
