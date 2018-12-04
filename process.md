@@ -479,35 +479,39 @@ The final visualization has several changes from the original design. In this se
 
 The top of the view now includes a title and brief summary of the visualization. Under the title, the first thing we see is a world map. The color is changed to a blue background, and we have added a hover feature to show the country's name. 
 
-(Insert Screenshot)
+![Image sketch](ProposalSketches/countryName.png)
 
 For functionality, we have added error checking to show a message when a country is selected that has no data in the worldwide dataset.  We have also created a legend to show the selected country on the right side of the map. 
+
+![Image sketch](ProposalSketches/noData.png)
 
 **Line Graphs**
 Below the map, we have arranged the line graphs into a single column on the left side of the view. They show five different singular attributes over time. Each graph has a hover feature on the line to show the year of each specific point. Hovering the mouse pointer over each point will also highlight the data shown in the corresponding points on the scatterplots. 
 
-(Insert Screenshot)
+![Image sketch](ProposalSketches/lineGraphsLeft.png)
 
 **Scatter Plot Graphs**
 On the right side of the view, we have reorganized the graphs to show three scatter plot graphs and a comparison graph. The scatter plot graphs show the direct correlation between each attribute and it's relationship with obesity by using them both as scales. Each point has a feature to highlight related data by hovering over the desired point. 
 
-(insert Screenshot)
+![Image sketch](ProposalSketches/hoverFeature.png)
 
 **Stacked Bar Charts/Obesity Distribution**
 The bottom graph we have added shows the difference in obesity between genders of the selected country. This graph shows the percentage of each gender that is obese and each gender is stacked to show the total percentage. This enables the viewer to see trends. We have also added a hover feature to show the specific gender of each bar and it's specific obesity percentage. 
 
-(insert Screenshot)
+![Image sketch](ProposalSketches/obesityDist.png)
 
 **Comparison Features**
-The comparison feature is functioning and we have added the option to select on the world map. Having one country selected shows the graphs with it's dataset, and selecting the comparison box enables the visualization to load another dataset to compare. When a second country is selected, the line graphs and scatter charts are shown with both datasets in the same color as their selected country on the world map. This enables the viewer to easily distinguish the difference between countries and their trend lines. 
+The comparison feature is functioning and we have added the option to select on the world map. Having one country selected shows the graphs with it's dataset, and selecting the comparison box enables the visualization to load another dataset to compare. When a second country is selected, the line graphs and scatter charts are shown with both datasets in the same color as their selected country on the world map. This enables the viewer to easily distinguish the difference between countries and their trend lines. To ensure there is no confusion, we have added a legend on the world map to display the colors of each country as shown in the image below.
+
+![Image sketch](ProposalSketches/compareLegend.png)
 
 Error checking was implemented in the comparison code to ensure that selecting more than two countries is not possible. This is a feature that could be changed in another version of this visualization, but for this visualization, using two datasets is enough information to properly compare two countries. 
 
 When two countries are being compared, the visualization will create a second stacked bar chart to show the difference as well. There are two graphs created with their trend lines and percentages shown by year with the same hovering features implemented. 
 
-(insert screenshot)
+![Image sketch](ProposalSketches/doubleObesityDist.png)
 
 **Insights**
 
-Using this visualization, we were unable to see any major correlations between datasets. The amount of food consumed according to diet composition is interesting to view, but we did not find much to show an impact between diet composition and obesity. There is a common trend between obesity and life expectancy, which is probably tied to the quality of life or food availability of each country. Hopefully this visualization will lead users to find different insights or provide different perspectives to the growing threat of global obesity. 
+Using this visualization, we were unable to see any major correlations between datasets. The amount of food consumed according to diet composition is interesting to view, but we did not find much to show an impact between diet composition and obesity. There is a common trend between obesity and life expectancy, which is probably tied to the quality of life or food availability of each country. Doing more research on our datasets would be helpful to create a more useful visualization. This was meant to be an exploration visualization and possibly show how diet composition could affect obesity, but our results do not quite justify this claim. Hopefully this visualization will lead users to find different insights or provide different perspectives to the growing threat of global obesity. 
 
