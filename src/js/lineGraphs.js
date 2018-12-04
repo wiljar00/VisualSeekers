@@ -458,10 +458,10 @@ class LineGraph{
             .attr("y", 0)
             .attr("x", 10)
             .attr("dy", ".35em")
-            .attr("dx", "-5em")
+            .attr("dx", "-3.5em")
             .attr("transform", "rotate(270)")
             .style("text-anchor", "start")
-            .style("font-size", "10px");
+            .style("font-size", "15px");
 
         lineGraph1
             .append("rect")

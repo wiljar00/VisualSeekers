@@ -21,7 +21,7 @@ The goal of this visualization is to create a tool to identify the contributing 
 [visualization](/src/index1.html)
 
 **Process Book**
-[Click here to view the process book: ](process.md)
+[Click here to view the process book: ](src/process.md)
 
 **Screen Cast of Visualization**
 
