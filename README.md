@@ -17,6 +17,8 @@ Group project for CS5890.
 **Project Name: Obesity Trends**
 The goal of this visualization is to create a tool to identify the contributing factors the the increasing worldwide obesity in adults. 
 
+[visualization](/src/index1.html)
+
 **Process Book**
 [Click here to view the process book: ](process.md)
 
