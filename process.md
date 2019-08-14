@@ -23,15 +23,15 @@ Team Members:
 
   
 
-Aditi Maheshwari, aditimaheshwari93@gmail.com
+Aditi Maheshwari,
 
   
 
-Jarom Wilcox, wiljar00@gmail.com
+Jarom Wilcox,
 
   
 
-Pratyusha Sai Kamarouthu, kpratyushasai@gmail.com
+Pratyusha Sai Kamarouthu,
 
   
 
